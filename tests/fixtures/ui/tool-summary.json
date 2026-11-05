@@ -1,0 +1,192 @@
+{
+  "name": "tool-summary",
+  "cases": [
+    {
+      "input": {
+        "kind": "bash",
+        "args": {
+          "command": "ls -la\nsecond"
+        }
+      },
+      "output": "ls -la"
+    },
+    {
+      "input": {
+        "kind": "bash",
+        "args": {
+          "description": "List files",
+          "command": "ls"
+        }
+      },
+      "output": "List files"
+    },
+    {
+      "input": {
+        "kind": "bash",
+        "args": {
+          "CommandLine": "dir"
+        }
+      },
+      "output": "dir"
+    },
+    {
+      "input": {
+        "kind": "edit",
+        "args": {
+          "file_path": "/work/app/src/a.js",
+          "old_string": "a"
+        }
+      },
+      "output": "src/a.js"
+    },
+    {
+      "input": {
+        "kind": "edit",
+        "args": {
+          "file_path": "/elsewhere/a.js"
+        }
+      },
+      "output": "/elsewhere/a.js"
+    },
+    {
+      "input": {
+        "kind": "write",
+        "args": {
+          "path": "/work/app/b.txt",
+          "content": "hi"
+        }
+      },
+      "output": "b.txt"
+    },
+    {
+      "input": {
+        "kind": "write",
+        "args": {
+          "content": "only text"
+        }
+      },
+      "output": "only text"
+    },
+    {
+      "input": {
+        "kind": "read",
+        "args": {
+          "file_path": "/work/app/a.js"
+        }
+      },
+      "output": "a.js"
+    },
+    {
+      "input": {
+        "kind": "read",
+        "args": {
+          "file_path": "/work/app/a.js",
+          "offset": 10,
+          "limit": 5
+        }
+      },
+      "output": "a.js · lines 10–14"
+    },
+    {
+      "input": {
+        "kind": "read",
+        "args": {
+          "pattern": "TODO",
+          "path": "/work/app"
+        }
+      },
+      "output": "TODO · /work/app"
+    },
+    {
+      "input": {
+        "kind": "read",
+        "args": {
+          "pattern": "TODO"
+        }
+      },
+      "output": "TODO"
+    },
+    {
+      "input": {
+        "kind": "read",
+        "args": {
+          "url": "https://example.org"
+        }
+      },
+      "output": "https://example.org"
+    },
+    {
+      "input": {
+        "kind": "tool",
+        "args": {
+          "query": "needle"
+        }
+      },
+      "output": "needle"
+    },
+    {
+      "input": {
+        "kind": "tool",
+        "args": {
+          "other": 3,
+          "text": "first string"
+        }
+      },
+      "output": "first string"
+    },
+    {
+      "input": {
+        "kind": "tool",
+        "args": {}
+      },
+      "output": ""
+    },
+    {
+      "input": {
+        "kind": "tool",
+        "args": null
+      },
+      "output": ""
+    },
+    {
+      "input": {
+        "kind": "tool"
+      },
+      "output": ""
+    },
+    {
+      "input": {
+        "kind": "tool",
+        "args": "plain string\nsecond line"
+      },
+      "output": "plain string"
+    },
+    {
+      "input": {
+        "kind": "bash",
+        "args": {
+          "command": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+      },
+      "output": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…"
+    },
+    {
+      "input": {
+        "kind": "bash",
+        "args": {
+          "command": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+        }
+      },
+      "output": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+    },
+    {
+      "input": {
+        "kind": "bash",
+        "args": {
+          "command": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+        }
+      },
+      "output": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy…"
+    }
+  ]
+}
