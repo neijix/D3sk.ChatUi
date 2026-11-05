@@ -1,0 +1,108 @@
+{
+  "name": "status-pills",
+  "cases": [
+    {
+      "input": null,
+      "output": null
+    },
+    {
+      "input": {},
+      "output": null
+    },
+    {
+      "input": {
+        "queued": true,
+        "running": true
+      },
+      "output": {
+        "kind": "queued",
+        "text": "Queued"
+      }
+    },
+    {
+      "input": {
+        "running": true
+      },
+      "output": {
+        "kind": "running",
+        "text": "Working"
+      }
+    },
+    {
+      "input": {
+        "terminal_working": true
+      },
+      "output": {
+        "kind": "running",
+        "text": "Working"
+      }
+    },
+    {
+      "input": {
+        "running": true,
+        "unread": true,
+        "has_error": true
+      },
+      "output": {
+        "kind": "running",
+        "text": "Working"
+      }
+    },
+    {
+      "input": {
+        "resume_at": 1700003600
+      },
+      "output": {
+        "kind": "resuming",
+        "text": "Resumes 23:13"
+      }
+    },
+    {
+      "input": {
+        "resume_at": 1700090000
+      },
+      "output": {
+        "kind": "resuming",
+        "text": "Resumes Wed 23:13"
+      }
+    },
+    {
+      "input": {
+        "resume_at": 1699999995
+      },
+      "output": {
+        "kind": "resuming",
+        "text": "Resumes soon"
+      }
+    },
+    {
+      "input": {
+        "resume_at": 1700000060,
+        "has_error": true
+      },
+      "output": {
+        "kind": "resuming",
+        "text": "Resumes 22:14"
+      }
+    },
+    {
+      "input": {
+        "has_error": true,
+        "unread": true
+      },
+      "output": {
+        "kind": "error",
+        "text": "Error"
+      }
+    },
+    {
+      "input": {
+        "unread": true
+      },
+      "output": {
+        "kind": "done",
+        "text": "Done"
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "working-word",
+  "cases": [
+    {
+      "input": "",
+      "output": "Patentage"
+    },
+    {
+      "input": null,
+      "output": "Patentage"
+    },
+    {
+      "input": "a",
+      "output": "Brochage"
+    },
+    {
+      "input": "chat-1",
+      "output": "Zigonnage"
+    },
+    {
+      "input": "chat-2",
+      "output": "Bizounage"
+    },
+    {
+      "input": "7f3a|conv",
+      "output": "Patentage"
+    },
+    {
+      "input": "é😀",
+      "output": "Taponnage"
+    }
+  ]
+}

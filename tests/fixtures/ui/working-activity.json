@@ -1,0 +1,113 @@
+{
+  "name": "working-activity",
+  "cases": [
+    {
+      "input": "Bash",
+      "output": "shell"
+    },
+    {
+      "input": "shell",
+      "output": "shell"
+    },
+    {
+      "input": "run_terminal_cmd",
+      "output": "shell"
+    },
+    {
+      "input": "KillShell",
+      "output": "shell"
+    },
+    {
+      "input": "BashOutput",
+      "output": "shell"
+    },
+    {
+      "input": "Read",
+      "output": "searching"
+    },
+    {
+      "input": "Grep",
+      "output": "searching"
+    },
+    {
+      "input": "Glob",
+      "output": "searching"
+    },
+    {
+      "input": "LS",
+      "output": "searching"
+    },
+    {
+      "input": "WebFetch",
+      "output": "searching"
+    },
+    {
+      "input": "WebSearch",
+      "output": "searching"
+    },
+    {
+      "input": "ToolSearch",
+      "output": "searching"
+    },
+    {
+      "input": "codebase_search",
+      "output": "searching"
+    },
+    {
+      "input": "Edit",
+      "output": "editing"
+    },
+    {
+      "input": "MultiEdit",
+      "output": "editing"
+    },
+    {
+      "input": "search_replace",
+      "output": "editing"
+    },
+    {
+      "input": "str_replace_editor",
+      "output": "editing"
+    },
+    {
+      "input": "NotebookEdit",
+      "output": "editing"
+    },
+    {
+      "input": "Write",
+      "output": "writing"
+    },
+    {
+      "input": "create_file",
+      "output": "writing"
+    },
+    {
+      "input": "Task",
+      "output": "assembling"
+    },
+    {
+      "input": "Agent",
+      "output": "assembling"
+    },
+    {
+      "input": "Skill",
+      "output": "assembling"
+    },
+    {
+      "input": "TodoWrite",
+      "output": "handling"
+    },
+    {
+      "input": "",
+      "output": "handling"
+    },
+    {
+      "input": null,
+      "output": "handling"
+    },
+    {
+      "input": "mcp__thing",
+      "output": "handling"
+    }
+  ]
+}

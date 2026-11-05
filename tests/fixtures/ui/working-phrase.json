@@ -1,0 +1,905 @@
+{
+  "name": "working-phrase",
+  "cases": [
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 0
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 4
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 5
+      },
+      "output": "En plein patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 10
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 59
+      },
+      "output": "En plein patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 119
+      },
+      "output": "En plein patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 120
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 125
+      },
+      "output": "En plein patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 130
+      },
+      "output": "Le processeur est dans le prélart…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 135
+      },
+      "output": "En plein patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 299
+      },
+      "output": "Ça chauffe sous le capot…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 300
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 305
+      },
+      "output": "Je bûche sur le problème…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 310
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 600
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "starting",
+        "elapsedSeconds": 1800
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 0
+      },
+      "output": "Gossage…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 4
+      },
+      "output": "Gossage…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 5
+      },
+      "output": "Je gosse là-dessus…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 10
+      },
+      "output": "Gossage…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 59
+      },
+      "output": "Je gosse là-dessus…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 119
+      },
+      "output": "Je gosse là-dessus…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 120
+      },
+      "output": "Gossage…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 125
+      },
+      "output": "Je gosse là-dessus…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 130
+      },
+      "output": "Je démêle les fils…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 135
+      },
+      "output": "Je gosse là-dessus…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 299
+      },
+      "output": "Le processeur est dans le prélart…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 300
+      },
+      "output": "Gossage…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 305
+      },
+      "output": "Ça chauffe sous le capot…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 310
+      },
+      "output": "Gossage…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 600
+      },
+      "output": "Gossage…"
+    },
+    {
+      "input": {
+        "activity": "shell",
+        "elapsedSeconds": 1800
+      },
+      "output": "Gossage…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 0
+      },
+      "output": "Pigrassage…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 4
+      },
+      "output": "Pigrassage…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 5
+      },
+      "output": "Je gratte le fond du baril…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 10
+      },
+      "output": "Pigrassage…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 59
+      },
+      "output": "Je gratte le fond du baril…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 119
+      },
+      "output": "Je gratte le fond du baril…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 120
+      },
+      "output": "Pigrassage…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 125
+      },
+      "output": "Je gratte le fond du baril…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 130
+      },
+      "output": "Je démêle les fils…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 135
+      },
+      "output": "Je gratte le fond du baril…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 299
+      },
+      "output": "Le processeur est dans le prélart…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 300
+      },
+      "output": "Pigrassage…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 305
+      },
+      "output": "Ça chauffe sous le capot…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 310
+      },
+      "output": "Pigrassage…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 600
+      },
+      "output": "Pigrassage…"
+    },
+    {
+      "input": {
+        "activity": "searching",
+        "elapsedSeconds": 1800
+      },
+      "output": "Pigrassage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 0
+      },
+      "output": "Bizounage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 4
+      },
+      "output": "Bizounage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 5
+      },
+      "output": "Picossage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 10
+      },
+      "output": "Bizounage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 59
+      },
+      "output": "Picossage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 119
+      },
+      "output": "Picossage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 120
+      },
+      "output": "Bizounage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 125
+      },
+      "output": "Picossage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 130
+      },
+      "output": "Le processeur est dans le prélart…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 135
+      },
+      "output": "Picossage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 299
+      },
+      "output": "Ça chauffe sous le capot…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 300
+      },
+      "output": "Bizounage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 305
+      },
+      "output": "Je bûche sur le problème…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 310
+      },
+      "output": "Bizounage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 600
+      },
+      "output": "Bizounage…"
+    },
+    {
+      "input": {
+        "activity": "editing",
+        "elapsedSeconds": 1800
+      },
+      "output": "Bizounage…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 0
+      },
+      "output": "Pitonnage…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 4
+      },
+      "output": "Pitonnage…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 5
+      },
+      "output": "Un instant, je pitonne ça…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 10
+      },
+      "output": "Pitonnage…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 59
+      },
+      "output": "Un instant, je pitonne ça…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 119
+      },
+      "output": "Un instant, je pitonne ça…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 120
+      },
+      "output": "Pitonnage…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 125
+      },
+      "output": "Un instant, je pitonne ça…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 130
+      },
+      "output": "Le processeur est dans le prélart…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 135
+      },
+      "output": "Un instant, je pitonne ça…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 299
+      },
+      "output": "Ça chauffe sous le capot…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 300
+      },
+      "output": "Pitonnage…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 305
+      },
+      "output": "Je bûche sur le problème…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 310
+      },
+      "output": "Pitonnage…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 600
+      },
+      "output": "Pitonnage…"
+    },
+    {
+      "input": {
+        "activity": "writing",
+        "elapsedSeconds": 1800
+      },
+      "output": "Pitonnage…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 0
+      },
+      "output": "Raboutinage…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 4
+      },
+      "output": "Raboutinage…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 5
+      },
+      "output": "Je raboutine des morceaux…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 10
+      },
+      "output": "Raboutinage…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 59
+      },
+      "output": "Je raboutine des morceaux…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 119
+      },
+      "output": "Je raboutine des morceaux…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 120
+      },
+      "output": "Raboutinage…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 125
+      },
+      "output": "Je raboutine des morceaux…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 130
+      },
+      "output": "Le processeur est dans le prélart…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 135
+      },
+      "output": "Je raboutine des morceaux…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 299
+      },
+      "output": "Ça chauffe sous le capot…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 300
+      },
+      "output": "Raboutinage…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 305
+      },
+      "output": "Je bûche sur le problème…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 310
+      },
+      "output": "Raboutinage…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 600
+      },
+      "output": "Raboutinage…"
+    },
+    {
+      "input": {
+        "activity": "assembling",
+        "elapsedSeconds": 1800
+      },
+      "output": "Raboutinage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 0
+      },
+      "output": "Taponnage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 4
+      },
+      "output": "Taponnage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 5
+      },
+      "output": "Schleppage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 10
+      },
+      "output": "Taponnage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 59
+      },
+      "output": "Schleppage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 119
+      },
+      "output": "Schleppage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 120
+      },
+      "output": "Taponnage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 125
+      },
+      "output": "Schleppage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 130
+      },
+      "output": "Le processeur est dans le prélart…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 135
+      },
+      "output": "Schleppage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 299
+      },
+      "output": "Ça chauffe sous le capot…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 300
+      },
+      "output": "Taponnage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 305
+      },
+      "output": "Je bûche sur le problème…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 310
+      },
+      "output": "Taponnage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 600
+      },
+      "output": "Taponnage…"
+    },
+    {
+      "input": {
+        "activity": "handling",
+        "elapsedSeconds": 1800
+      },
+      "output": "Taponnage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 0
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 4
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 5
+      },
+      "output": "En plein patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 10
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 59
+      },
+      "output": "En plein patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 119
+      },
+      "output": "En plein patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 120
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 125
+      },
+      "output": "En plein patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 130
+      },
+      "output": "Le processeur est dans le prélart…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 135
+      },
+      "output": "En plein patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 299
+      },
+      "output": "Ça chauffe sous le capot…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 300
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 305
+      },
+      "output": "Je bûche sur le problème…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 310
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 600
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {
+        "activity": "nonsense",
+        "elapsedSeconds": 1800
+      },
+      "output": "Patentage…"
+    },
+    {
+      "input": {},
+      "output": "Patentage…"
+    }
+  ]
+}

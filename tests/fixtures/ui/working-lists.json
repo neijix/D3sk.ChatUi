@@ -1,0 +1,141 @@
+{
+  "name": "working-lists",
+  "cases": [
+    {
+      "input": {
+        "phrases": {
+          "starting": [
+            "Patentage…",
+            "En plein patentage…"
+          ],
+          "thinking": [
+            "Zigonnage…",
+            "Je me casse le bicycle…"
+          ],
+          "searching": [
+            "Pigrassage…",
+            "Je gratte le fond du baril…"
+          ],
+          "shell": [
+            "Gossage…",
+            "Je gosse là-dessus…"
+          ],
+          "editing": [
+            "Bizounage…",
+            "Picossage…"
+          ],
+          "writing": [
+            "Pitonnage…",
+            "Un instant, je pitonne ça…"
+          ],
+          "handling": [
+            "Taponnage…",
+            "Schleppage…"
+          ],
+          "assembling": [
+            "Raboutinage…",
+            "Je raboutine des morceaux…"
+          ],
+          "wrapping": [
+            "Brochage…",
+            "Pitonnage…"
+          ],
+          "recovering": [
+            "M'm'arranger avec le trouble…",
+            "Picossage…"
+          ]
+        },
+        "longHaul": [
+          "Le processeur est dans le prélart…",
+          "Ça chauffe sous le capot…",
+          "Je bûche sur le problème…",
+          "Ça demande pas mal de jus…",
+          "Je démêle les fils…"
+        ],
+        "words": [
+          "Patentage",
+          "Gossage",
+          "Zigonnage",
+          "Bizounage",
+          "Pitonnage",
+          "Picossage",
+          "Taponnage",
+          "Pigrassage",
+          "Raboutinage",
+          "Brochage",
+          "Schleppage"
+        ],
+        "queued": "Queued — starts on its own once the other chat in this project is done",
+        "sending": "Sending — getting the chat ready…",
+        "terminal": "Working in the terminal — its reply comes in here as it writes"
+      },
+      "output": {
+        "phrases": {
+          "starting": [
+            "Patentage…",
+            "En plein patentage…"
+          ],
+          "thinking": [
+            "Zigonnage…",
+            "Je me casse le bicycle…"
+          ],
+          "searching": [
+            "Pigrassage…",
+            "Je gratte le fond du baril…"
+          ],
+          "shell": [
+            "Gossage…",
+            "Je gosse là-dessus…"
+          ],
+          "editing": [
+            "Bizounage…",
+            "Picossage…"
+          ],
+          "writing": [
+            "Pitonnage…",
+            "Un instant, je pitonne ça…"
+          ],
+          "handling": [
+            "Taponnage…",
+            "Schleppage…"
+          ],
+          "assembling": [
+            "Raboutinage…",
+            "Je raboutine des morceaux…"
+          ],
+          "wrapping": [
+            "Brochage…",
+            "Pitonnage…"
+          ],
+          "recovering": [
+            "M'm'arranger avec le trouble…",
+            "Picossage…"
+          ]
+        },
+        "longHaul": [
+          "Le processeur est dans le prélart…",
+          "Ça chauffe sous le capot…",
+          "Je bûche sur le problème…",
+          "Ça demande pas mal de jus…",
+          "Je démêle les fils…"
+        ],
+        "words": [
+          "Patentage",
+          "Gossage",
+          "Zigonnage",
+          "Bizounage",
+          "Pitonnage",
+          "Picossage",
+          "Taponnage",
+          "Pigrassage",
+          "Raboutinage",
+          "Brochage",
+          "Schleppage"
+        ],
+        "queued": "Queued — starts on its own once the other chat in this project is done",
+        "sending": "Sending — getting the chat ready…",
+        "terminal": "Working in the terminal — its reply comes in here as it writes"
+      }
+    }
+  ]
+}
