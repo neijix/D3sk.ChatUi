@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/D3sk.ChatUi/D3sk.ChatUi.csproj" />
+    <Project Path="src/D3sk.ChatUi.Avalonia/D3sk.ChatUi.Avalonia.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/D3sk.ChatUi.Tests/D3sk.ChatUi.Tests.csproj" />
+    <Project Path="tests/D3sk.ChatUi.Avalonia.Tests/D3sk.ChatUi.Avalonia.Tests.csproj" />
+  </Folder>
+</Solution>

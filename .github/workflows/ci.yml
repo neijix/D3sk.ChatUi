@@ -1,0 +1,45 @@
+# Every push and pull request runs the C# gate: restore, build with warnings as errors, every test.
+# Linux runs on the owner's self-hosted runner (labels self-hosted, kyber): it is not ephemeral,
+# so the first step points the .NET install, NuGet and XDG folders at $RUNNER_TEMP (setup-dotnet's
+# default /usr/share/dotnet is not writable there). A fork picks its own
+# runner with the repository variable CI_RUNS_ON, a JSON label list such as ["ubuntu-latest"].
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['**.md', 'docs/**']
+  pull_request:
+    paths-ignore: ['**.md', 'docs/**']
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (linux, dotnet)
+    runs-on: ${{ fromJSON(vars.CI_RUNS_ON || '["self-hosted", "kyber"]') }}
+    timeout-minutes: 20
+    steps:
+      - name: Keep the runner's home untouched
+        run: |
+          {
+            echo "DOTNET_INSTALL_DIR=$RUNNER_TEMP/dotnet"
+            echo "DOTNET_CLI_HOME=$RUNNER_TEMP/dotnet-home"
+            echo "NUGET_PACKAGES=$RUNNER_TEMP/nuget/packages"
+            echo "NUGET_HTTP_CACHE_PATH=$RUNNER_TEMP/nuget/http"
+            echo "NUGET_PLUGINS_CACHE_PATH=$RUNNER_TEMP/nuget/plugins"
+            echo "XDG_DATA_HOME=$RUNNER_TEMP/xdg/data"
+            echo "DOTNET_CLI_TELEMETRY_OPTOUT=1"
+            echo "DOTNET_NOLOGO=1"
+          } >> "$GITHUB_ENV"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet test D3sk.ChatUi.slnx -c Release

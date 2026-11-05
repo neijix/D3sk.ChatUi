@@ -1,0 +1,9 @@
+<Project>
+  <!-- Copy to Directory.Build.local.targets (gitignored; never committed). While it exists,
+       a project that references D3sk.Contracts builds against the checkout instead of the package.
+       Restore again after adding or removing it. Neither package references Contracts yet. -->
+  <ItemGroup Condition="'@(PackageReference->WithMetadataValue('Identity', 'D3sk.Contracts'))' != ''">
+    <PackageReference Remove="D3sk.Contracts" />
+    <ProjectReference Include="/home/you/Code/D3sk.Contracts/src/D3sk.Contracts/D3sk.Contracts.csproj" />
+  </ItemGroup>
+</Project>
