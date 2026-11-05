@@ -1,0 +1,3 @@
+# Frozen copy of tests/fixtures/markdown from D3SKHAND (the corpus markdown.js and the C# writer both pass)
+commit a6c067ae7fdb874ccd916ef95b4d0c066c473fa5
+4948ff802b941381d515835b0a84df4c9616ba1e07b9c18b1397764a50a380e6 tests/fixtures/markdown/cases.json

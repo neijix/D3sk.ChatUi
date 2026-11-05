@@ -1,0 +1,156 @@
+{
+  "min_cases": 25,
+  "cases": [
+    {
+      "name": "raw HTML is escaped, never passed through",
+      "input": "<script>alert(1)</script>\n\n<img src=x onerror=\"alert(1)\">",
+      "includes": [
+        "&lt;script&gt;"
+      ],
+      "excludes": [
+        "<script>",
+        "<img"
+      ]
+    },
+    {
+      "name": "javascript link becomes plain text",
+      "input": "[x](javascript:alert(1))",
+      "html": "<p>x</p>"
+    },
+    {
+      "name": "an http(s) link becomes an anchor",
+      "input": "[docs](https://example.com/a?b=1&c=2)",
+      "html": "<p><a href=\"https://example.com/a?b=1&amp;c=2\" target=\"_blank\" rel=\"noopener noreferrer\">docs</a></p>"
+    },
+    {
+      "name": "data url is not a link",
+      "input": "[x](data:text/html,hi)",
+      "html": "<p>x</p>",
+      "excludes": [
+        "<a",
+        "href="
+      ]
+    },
+    {
+      "name": "protocol-relative url is not a link",
+      "input": "[x](//evil.example/phish)",
+      "html": "<p>x</p>",
+      "excludes": [
+        "<a",
+        "href="
+      ]
+    },
+    {
+      "name": "image javascript url is not a link",
+      "input": "![x](javascript:alert(1))",
+      "html": "<p>!x</p>",
+      "excludes": [
+        "<a",
+        "href="
+      ]
+    },
+    {
+      "name": "link urls cannot break out of the href attribute",
+      "input": "[x](https://a.com/\"onmouseover=alert(1))",
+      "excludes": [
+        "\"onmouseover"
+      ]
+    },
+    {
+      "name": "fenced code is escaped and not formatted",
+      "input": "```js\n**a** <b>\n```",
+      "html": "<pre><code class=\"language-js\">**a** &lt;b&gt;</code></pre>"
+    },
+    {
+      "name": "an unclosed fence renders while streaming",
+      "input": "```\nabc",
+      "html": "<pre><code>abc</code></pre>"
+    },
+    {
+      "name": "table cells are escaped and only get inline formatting",
+      "input": "| a | <b> |\n|---|:---:|\n| **x** | `y` |",
+      "html": "<div class=\"table-wrap\"><table><thead><tr><th>a</th><th>&lt;b&gt;</th></tr></thead><tbody><tr><td><strong>x</strong></td><td><code>y</code></td></tr></tbody></table></div>"
+    },
+    {
+      "name": "a pipe in a paragraph is not a table",
+      "input": "a | b\nnext",
+      "html": "<p>a | b<br>next</p>"
+    },
+    {
+      "name": "rules and quotes, with quoted HTML escaped",
+      "input": "x\n\n---\n> <i>q</i>\n> r",
+      "html": "<p>x</p><hr><blockquote>&lt;i&gt;q&lt;/i&gt;<br>r</blockquote>"
+    },
+    {
+      "name": "inline code content is left alone",
+      "input": "run `**x**` now",
+      "html": "<p>run <code>**x**</code> now</p>"
+    },
+    {
+      "name": "paragraphs, lists and emphasis",
+      "input": "a **b** *c*\nd\n\n- one\n- two\n1. first",
+      "html": "<p>a <strong>b</strong> <em>c</em><br>d</p><ul><li>one</li><li>two</li></ul><ol><li>first</li></ol>"
+    },
+    {
+      "name": "headings cap at h3",
+      "input": "# A\n#### B",
+      "html": "<h1>A</h1><h3>B</h3>"
+    },
+    {
+      "name": "the new-chat deep link stays a same-tab anchor, encoded values and all",
+      "input": "[Fix](#/new?project=D%3A%2FCode%2FX&text=Fix%20the%20plan%3A%20a%2Fb)",
+      "html": "<p><a href=\"#/new?project=D%3A%2FCode%2FX&amp;text=Fix%20the%20plan%3A%20a%2Fb\">Fix</a></p>",
+      "excludes": [
+        "target=",
+        "rel="
+      ]
+    },
+    {
+      "name": "only #/new? is kept besides http(s): [x](javascript:alert(1))",
+      "input": "[x](javascript:alert(1))",
+      "html": "<p>x</p>"
+    },
+    {
+      "name": "only #/new? is kept besides http(s): [x](data:text/html,hi)",
+      "input": "[x](data:text/html,hi)",
+      "html": "<p>x</p>"
+    },
+    {
+      "name": "only #/new? is kept besides http(s): [x](#/c/0123abcd)",
+      "input": "[x](#/c/0123abcd)",
+      "html": "<p>x</p>"
+    },
+    {
+      "name": "only #/new? is kept besides http(s): [x](#/h/abc/c/0123abcd)",
+      "input": "[x](#/h/abc/c/0123abcd)",
+      "html": "<p>x</p>"
+    },
+    {
+      "name": "only #/new? is kept besides http(s): [x](#/new)",
+      "input": "[x](#/new)",
+      "html": "<p>x</p>"
+    },
+    {
+      "name": "only #/new? is kept besides http(s): [x](#/newer?a=b)",
+      "input": "[x](#/newer?a=b)",
+      "html": "<p>x</p>"
+    },
+    {
+      "name": "only #/new? is kept besides http(s): [x](/#/new?a=b)",
+      "input": "[x](/#/new?a=b)",
+      "html": "<p>x</p>"
+    },
+    {
+      "name": "only #/new? is kept besides http(s): [x](javascript:#/new?a=b)",
+      "input": "[x](javascript:#/new?a=b)",
+      "html": "<p>x</p>"
+    },
+    {
+      "name": "a quote in a deep link cannot break out of the href",
+      "input": "[x](#/new?text=\"onmouseover=alert(1))",
+      "excludes": [
+        "\"onmouseover"
+      ]
+    }
+  ]
+}
