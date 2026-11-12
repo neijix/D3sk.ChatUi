@@ -1,0 +1,142 @@
+{
+  "description": "D3sk.AgentCli's agy__tool_steps stream, replayed one event a second after the host's start frame.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Go"
+          },
+          "agent": "agy",
+          "model": "gemini-3-pro"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "every": 1,
+      "stream": "agentcli/agy__tool_steps.expected.jsonl",
+      "take": 4
+    },
+    {
+      "at": 4.5,
+      "snapshot": "before-done"
+    },
+    {
+      "at": 5,
+      "every": 1,
+      "stream": "agentcli/agy__tool_steps.expected.jsonl",
+      "skip": 4
+    },
+    {
+      "at": 6,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "before-done": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "a1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Antigravity · Gemini 3 Pro",
+          "showLabel": true,
+          "brand": "gemini",
+          "live": true,
+          "working": {
+            "text": "Brochage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "2",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "/p/pyproject.toml",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"AbsolutePath\": \"/p/pyproject.toml\"\n}",
+              "diff": null,
+              "output": "31 lines",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "Done."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "a1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Antigravity · Gemini 3 Pro",
+          "showLabel": true,
+          "brand": "gemini",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "2",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "/p/pyproject.toml",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"AbsolutePath\": \"/p/pyproject.toml\"\n}",
+              "diff": null,
+              "output": "31 lines",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "Done."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

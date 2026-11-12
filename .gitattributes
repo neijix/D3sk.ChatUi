@@ -1,2 +1,4 @@
-# The frozen fixtures are compared byte for byte against their manifest: no line-ending conversion.
-tests/fixtures/** -text
+# The frozen copies are compared byte for byte against their manifests: no line-ending conversion.
+spec/corpus/** -text
+spec/conformance/agentcli/** -text
+packages/chat-ui/vendor/acb/** -text

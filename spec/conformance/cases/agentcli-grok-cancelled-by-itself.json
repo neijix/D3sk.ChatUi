@@ -1,0 +1,120 @@
+{
+  "description": "D3sk.AgentCli's grok__cancelled_by_itself stream, replayed one event a second after the host's start frame.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Go"
+          },
+          "agent": "grok",
+          "model": "grok-4"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "every": 1,
+      "stream": "agentcli/grok__cancelled_by_itself.expected.jsonl",
+      "take": 3
+    },
+    {
+      "at": 3.5,
+      "snapshot": "before-done"
+    },
+    {
+      "at": 4,
+      "every": 1,
+      "stream": "agentcli/grok__cancelled_by_itself.expected.jsonl",
+      "skip": 3
+    },
+    {
+      "at": 5,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "before-done": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "g1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Grok · Grok 4",
+          "showLabel": true,
+          "brand": "grok",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Running tests."
+            }
+          ]
+        },
+        {
+          "kind": "error",
+          "label": "Error · Grok",
+          "text": "Grok cancelled its own turn: a tool needed an approval that a headless run cannot give. Choose a more permissive mode (e.g. Bypass) if it should run that tool.",
+          "parts": []
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "g1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Grok · Grok 4",
+          "showLabel": true,
+          "brand": "grok",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "Running tests."
+            }
+          ]
+        },
+        {
+          "kind": "error",
+          "label": "Error · Grok",
+          "text": "Grok cancelled its own turn: a tool needed an approval that a headless run cannot give. Choose a more permissive mode (e.g. Bypass) if it should run that tool.",
+          "parts": []
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

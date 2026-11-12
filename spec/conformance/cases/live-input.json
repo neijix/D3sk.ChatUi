@@ -1,0 +1,246 @@
+{
+  "description": "A message sent while the agent works is taken mid-turn: the reply so far closes and a new one opens.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Refactor the parser"
+          },
+          "agent": "claude",
+          "model": "claude-opus-4-7"
+        }
+      ]
+    },
+    {
+      "at": 0.5,
+      "frame": [
+        "live_input",
+        {}
+      ]
+    },
+    {
+      "at": 1,
+      "frame": [
+        "thinking",
+        {
+          "text": "Where does the parser start?"
+        }
+      ]
+    },
+    {
+      "at": 4,
+      "frame": [
+        "text",
+        {
+          "text": "Starting with the lexer."
+        }
+      ]
+    },
+    {
+      "at": 5,
+      "snapshot": "first-reply"
+    },
+    {
+      "at": 6,
+      "frame": [
+        "input_accepted",
+        {
+          "user_message": {
+            "id": "u2",
+            "content": "Also keep the old API"
+          },
+          "followup_id": "f1"
+        }
+      ]
+    },
+    {
+      "at": 6.5,
+      "snapshot": "taken"
+    },
+    {
+      "at": 7,
+      "frame": [
+        "text",
+        {
+          "text": "Keeping the old API as a wrapper."
+        }
+      ]
+    },
+    {
+      "at": 8,
+      "frame": [
+        "done",
+        {
+          "returncode": 0
+        }
+      ]
+    },
+    {
+      "at": 9,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "first-reply": {
+      "busy": true,
+      "queued": false,
+      "liveInput": true,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Refactor the parser",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Un instant, je pitonne ça…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "Where does the parser start?",
+              "label": "Thought for 3s",
+              "open": false
+            },
+            {
+              "type": "text",
+              "text": "Starting with the lexer."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "taken": {
+      "busy": true,
+      "queued": false,
+      "liveInput": true,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Refactor the parser",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "Where does the parser start?",
+              "label": "Thought for 3s",
+              "open": false
+            },
+            {
+              "type": "text",
+              "text": "Starting with the lexer."
+            }
+          ]
+        },
+        {
+          "kind": "user",
+          "id": "u2",
+          "text": "Also keep the old API",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": false,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Un instant, je pitonne ça…",
+            "queued": false
+          },
+          "parts": []
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Refactor the parser",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "Where does the parser start?",
+              "label": "Thought for 3s",
+              "open": false
+            },
+            {
+              "type": "text",
+              "text": "Starting with the lexer."
+            }
+          ]
+        },
+        {
+          "kind": "user",
+          "id": "u2",
+          "text": "Also keep the old API",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": false,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "Keeping the old API as a wrapper."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

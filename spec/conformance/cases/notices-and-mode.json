@@ -1,0 +1,297 @@
+{
+  "description": "Transient notices go once the reply runs again; a mode change is noted; an error row ends the turn.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Continue"
+          },
+          "agent": "claude",
+          "model": "claude-opus-4-7"
+        }
+      ]
+    },
+    {
+      "at": 0.2,
+      "frame": [
+        "notice",
+        {
+          "message": "Re-running your last message after the restart",
+          "transient": true
+        }
+      ]
+    },
+    {
+      "at": 0.3,
+      "frame": [
+        "notice",
+        {
+          "message": "This chat runs on the Personal account",
+          "transient": false
+        }
+      ]
+    },
+    {
+      "at": 0.5,
+      "snapshot": "with-notices"
+    },
+    {
+      "at": 1,
+      "frame": [
+        "text",
+        {
+          "text": "Picking up where I stopped."
+        }
+      ]
+    },
+    {
+      "at": 1.5,
+      "snapshot": "swept"
+    },
+    {
+      "at": 2,
+      "frame": [
+        "permission_mode",
+        {
+          "mode": "bypassPermissions"
+        }
+      ]
+    },
+    {
+      "at": 2.5,
+      "frame": [
+        "permission_mode",
+        {
+          "mode": "plan",
+          "error": "the CLI cannot switch mid-turn"
+        }
+      ]
+    },
+    {
+      "at": 3,
+      "snapshot": "modes"
+    },
+    {
+      "at": 4,
+      "frame": [
+        "thinking",
+        {
+          "text": "Hmm"
+        }
+      ]
+    },
+    {
+      "at": 5,
+      "frame": [
+        "error",
+        {
+          "message": "Claude hit its usage limit.",
+          "code": "rate_limited"
+        }
+      ]
+    },
+    {
+      "at": 5.5,
+      "frame": [
+        "done",
+        {
+          "returncode": 1
+        }
+      ]
+    },
+    {
+      "at": 6,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "with-notices": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Continue",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Patentage…",
+            "queued": false
+          },
+          "parts": []
+        },
+        {
+          "kind": "notice",
+          "text": "Re-running your last message after the restart",
+          "transient": true
+        },
+        {
+          "kind": "notice",
+          "text": "This chat runs on the Personal account",
+          "transient": false
+        }
+      ],
+      "approvals": []
+    },
+    "swept": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Continue",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Picking up where I stopped."
+            }
+          ]
+        },
+        {
+          "kind": "notice",
+          "text": "This chat runs on the Personal account",
+          "transient": false
+        }
+      ],
+      "approvals": []
+    },
+    "modes": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": "plan",
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Continue",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Picking up where I stopped."
+            }
+          ]
+        },
+        {
+          "kind": "notice",
+          "text": "This chat runs on the Personal account",
+          "transient": false
+        },
+        {
+          "kind": "notice",
+          "text": "Now in Bypass permissions — from the next step on.",
+          "transient": true
+        },
+        {
+          "kind": "notice",
+          "text": "Still in Plan — read-only: the CLI cannot switch mid-turn",
+          "transient": false
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": "plan",
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Continue",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "Picking up where I stopped."
+            },
+            {
+              "type": "thinking",
+              "text": "Hmm",
+              "label": "Thought for 2s",
+              "open": false
+            }
+          ]
+        },
+        {
+          "kind": "notice",
+          "text": "This chat runs on the Personal account",
+          "transient": false
+        },
+        {
+          "kind": "notice",
+          "text": "Still in Plan — read-only: the CLI cannot switch mid-turn",
+          "transient": false
+        },
+        {
+          "kind": "error",
+          "label": "Error · Claude Code",
+          "text": "Claude hit its usage limit.",
+          "parts": []
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

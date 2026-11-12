@@ -1,0 +1,154 @@
+{
+  "description": "D3sk.AgentCli's copilot__reasoning_tools_text stream, replayed one event a second after the host's start frame.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Go"
+          },
+          "agent": "copilot",
+          "model": "gpt-5"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "every": 1,
+      "stream": "agentcli/copilot__reasoning_tools_text.expected.jsonl",
+      "take": 7
+    },
+    {
+      "at": 7.5,
+      "snapshot": "before-done"
+    },
+    {
+      "at": 8,
+      "every": 1,
+      "stream": "agentcli/copilot__reasoning_tools_text.expected.jsonl",
+      "skip": 7
+    },
+    {
+      "at": 9,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "before-done": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "p1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Copilot · GPT-5",
+          "showLabel": true,
+          "brand": "openai",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "I should",
+              "label": "Thought for 1s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "x",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "ls",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "ls",
+              "diff": null,
+              "output": "hub\n",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "The answer. Also this."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "p1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Copilot · GPT-5",
+          "showLabel": true,
+          "brand": "openai",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "I should",
+              "label": "Thought for 1s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "x",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "ls",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "ls",
+              "diff": null,
+              "output": "hub\n",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "The answer. Also this."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

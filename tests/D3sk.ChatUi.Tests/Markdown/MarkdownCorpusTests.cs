@@ -9,7 +9,7 @@ public class MarkdownCorpusTests
 {
     private const int CasesBeforeCorpus = 25;
 
-    private static readonly string FixtureDir = Path.Combine(FindRoot(), "tests", "fixtures", "markdown");
+    private static readonly string FixtureDir = Path.Combine(FindRoot(), "spec", "corpus", "markdown");
 
     private static string FindRoot()
     {
@@ -60,7 +60,7 @@ public class MarkdownCorpusTests
             var name = Path.GetFileName(full);
             if (name != "manifest.txt")
             {
-                Assert.True(files.ContainsKey("tests/fixtures/markdown/" + name), $"not in the manifest: {name}");
+                Assert.True(files.ContainsKey("spec/corpus/markdown/" + name), $"not in the manifest: {name}");
             }
         }
     }

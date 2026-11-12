@@ -1,0 +1,154 @@
+{
+  "description": "D3sk.AgentCli's agent__thinking_tools_text stream, replayed one event a second after the host's start frame.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Go"
+          },
+          "agent": "agent",
+          "model": "gpt-5"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "every": 1,
+      "stream": "agentcli/agent__thinking_tools_text.expected.jsonl",
+      "take": 5
+    },
+    {
+      "at": 5.5,
+      "snapshot": "before-done"
+    },
+    {
+      "at": 6,
+      "every": 1,
+      "stream": "agentcli/agent__thinking_tools_text.expected.jsonl",
+      "skip": 5
+    },
+    {
+      "at": 7,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "before-done": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "c1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Cursor · GPT-5",
+          "showLabel": true,
+          "brand": "openai",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "I will read",
+              "label": "Thought for 1s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "k1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "List",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "ls agentdesk",
+              "diff": null,
+              "output": "hub\n",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "One."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "c1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Cursor · GPT-5",
+          "showLabel": true,
+          "brand": "openai",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "I will read",
+              "label": "Thought for 1s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "k1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "List",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "ls agentdesk",
+              "diff": null,
+              "output": "hub\n",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "One."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

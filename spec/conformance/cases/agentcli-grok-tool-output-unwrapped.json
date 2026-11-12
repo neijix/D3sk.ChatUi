@@ -1,0 +1,176 @@
+{
+  "description": "D3sk.AgentCli's grok__tool_output_unwrapped stream, replayed one event a second after the host's start frame.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Go"
+          },
+          "agent": "grok",
+          "model": "grok-4"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "every": 1,
+      "stream": "agentcli/grok__tool_output_unwrapped.expected.jsonl",
+      "take": 6
+    },
+    {
+      "at": 6.5,
+      "snapshot": "before-done"
+    },
+    {
+      "at": 7,
+      "every": 1,
+      "stream": "agentcli/grok__tool_output_unwrapped.expected.jsonl",
+      "skip": 6
+    },
+    {
+      "at": 8,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "before-done": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "g1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Grok · Grok 4",
+          "showLabel": true,
+          "brand": "grok",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "c0",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "pyproject.toml",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"target_file\": \"pyproject.toml\"\n}",
+              "diff": null,
+              "output": "1→name",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "c1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "ls",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "ls",
+              "diff": null,
+              "output": "hub\nnode\n",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "Done."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "g1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Grok · Grok 4",
+          "showLabel": true,
+          "brand": "grok",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "c0",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "pyproject.toml",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"target_file\": \"pyproject.toml\"\n}",
+              "diff": null,
+              "output": "1→name",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "c1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "ls",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "ls",
+              "diff": null,
+              "output": "hub\nnode\n",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "Done."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

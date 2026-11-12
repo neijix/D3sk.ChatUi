@@ -1,0 +1,350 @@
+{
+  "description": "AskUserQuestion arrives as an approval with options; the dialog model lists them.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Set it up"
+          },
+          "agent": "claude",
+          "model": "claude-opus-4-7"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "frame": [
+        "tool_call",
+        {
+          "call_id": "q1",
+          "name": "AskUserQuestion",
+          "arguments": {
+            "questions": [
+              {
+                "question": "Which database?",
+                "header": "Storage",
+                "multiSelect": false,
+                "options": [
+                  {
+                    "label": "SQLite",
+                    "description": "One file, no server"
+                  },
+                  {
+                    "label": "Postgres"
+                  }
+                ]
+              },
+              {
+                "question": "Which extras?",
+                "header": "Extras",
+                "multiSelect": true,
+                "options": [
+                  {
+                    "label": "Auth"
+                  },
+                  {
+                    "label": "Billing",
+                    "description": "Stripe"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "at": 1.1,
+      "frame": [
+        "approval_request",
+        {
+          "approval_id": "aq",
+          "call_id": "q1",
+          "name": "AskUserQuestion",
+          "arguments": {
+            "questions": [
+              {
+                "question": "Which database?",
+                "header": "Storage",
+                "multiSelect": false,
+                "options": [
+                  {
+                    "label": "SQLite",
+                    "description": "One file, no server"
+                  },
+                  {
+                    "label": "Postgres"
+                  }
+                ]
+              },
+              {
+                "question": "Which extras?",
+                "header": "Extras",
+                "multiSelect": true,
+                "options": [
+                  {
+                    "label": "Auth"
+                  },
+                  {
+                    "label": "Billing",
+                    "description": "Stripe"
+                  }
+                ]
+              }
+            ]
+          },
+          "description": ""
+        }
+      ]
+    },
+    {
+      "at": 2,
+      "snapshot": "question"
+    },
+    {
+      "at": 3,
+      "dismissApproval": "aq"
+    },
+    {
+      "at": 3,
+      "snapshot": "answered-here"
+    },
+    {
+      "at": 4,
+      "frame": [
+        "approval_resolved",
+        {
+          "approval_id": "aq",
+          "allow": true
+        }
+      ]
+    },
+    {
+      "at": 4.5,
+      "frame": [
+        "tool_result",
+        {
+          "call_id": "q1",
+          "output": "Which database? SQLite\nWhich extras? Auth",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "at": 5,
+      "frame": [
+        "done",
+        {
+          "returncode": 0
+        }
+      ]
+    },
+    {
+      "at": 6,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "question": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Set it up",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Taponnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "q1",
+              "name": "AskUserQuestion",
+              "kind": "other",
+              "compact": false,
+              "summary": "",
+              "status": "running",
+              "statusLabel": "Running",
+              "input": "{\n  \"questions\": [\n    {\n      \"question\": \"Which database?\",\n      \"header\": \"Storage\",\n      \"multiSelect\": false,\n      \"options\": [\n        {\n          \"label\": \"SQLite\",\n          \"description\": \"One file, no server\"\n        },\n        {\n          \"label\": \"Postgres\"\n        }\n      ]\n    },\n    {\n      \"question\": \"Which extras?\",\n      \"header\": \"Extras\",\n      \"multiSelect\": true,\n      \"options\": [\n        {\n          \"label\": \"Auth\"\n        },\n        {\n          \"label\": \"Billing\",\n          \"description\": \"Stripe\"\n        }\n      ]\n    }\n  ]\n}",
+              "diff": null,
+              "output": "…",
+              "outputShown": true,
+              "approval": {
+                "state": "waiting",
+                "label": "waiting for approval",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        }
+      ],
+      "approvals": [
+        {
+          "approvalId": "aq",
+          "callId": "q1",
+          "isQuestion": true,
+          "title": "Claude Code has a question",
+          "summary": "Pick an answer to continue.",
+          "tool": "AskUserQuestion",
+          "kind": "other",
+          "input": null,
+          "diff": null,
+          "questions": [
+            {
+              "question": "Which database?",
+              "header": "Storage",
+              "multiSelect": false,
+              "options": [
+                {
+                  "label": "SQLite",
+                  "description": "One file, no server"
+                },
+                {
+                  "label": "Postgres",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "question": "Which extras?",
+              "header": "Extras",
+              "multiSelect": true,
+              "options": [
+                {
+                  "label": "Auth",
+                  "description": ""
+                },
+                {
+                  "label": "Billing",
+                  "description": "Stripe"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "answered-here": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Set it up",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Taponnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "q1",
+              "name": "AskUserQuestion",
+              "kind": "other",
+              "compact": false,
+              "summary": "",
+              "status": "running",
+              "statusLabel": "Running",
+              "input": "{\n  \"questions\": [\n    {\n      \"question\": \"Which database?\",\n      \"header\": \"Storage\",\n      \"multiSelect\": false,\n      \"options\": [\n        {\n          \"label\": \"SQLite\",\n          \"description\": \"One file, no server\"\n        },\n        {\n          \"label\": \"Postgres\"\n        }\n      ]\n    },\n    {\n      \"question\": \"Which extras?\",\n      \"header\": \"Extras\",\n      \"multiSelect\": true,\n      \"options\": [\n        {\n          \"label\": \"Auth\"\n        },\n        {\n          \"label\": \"Billing\",\n          \"description\": \"Stripe\"\n        }\n      ]\n    }\n  ]\n}",
+              "diff": null,
+              "output": "…",
+              "outputShown": true,
+              "approval": {
+                "state": "waiting",
+                "label": "waiting for approval",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Set it up",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "q1",
+              "name": "AskUserQuestion",
+              "kind": "other",
+              "compact": false,
+              "summary": "",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"questions\": [\n    {\n      \"question\": \"Which database?\",\n      \"header\": \"Storage\",\n      \"multiSelect\": false,\n      \"options\": [\n        {\n          \"label\": \"SQLite\",\n          \"description\": \"One file, no server\"\n        },\n        {\n          \"label\": \"Postgres\"\n        }\n      ]\n    },\n    {\n      \"question\": \"Which extras?\",\n      \"header\": \"Extras\",\n      \"multiSelect\": true,\n      \"options\": [\n        {\n          \"label\": \"Auth\"\n        },\n        {\n          \"label\": \"Billing\",\n          \"description\": \"Stripe\"\n        }\n      ]\n    }\n  ]\n}",
+              "diff": null,
+              "output": "Which database? SQLite\nWhich extras? Auth",
+              "outputShown": true,
+              "approval": {
+                "state": "allowed",
+                "label": "approved",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

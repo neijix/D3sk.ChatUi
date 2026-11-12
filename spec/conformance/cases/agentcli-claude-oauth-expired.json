@@ -1,0 +1,100 @@
+{
+  "description": "D3sk.AgentCli's claude__oauth_expired stream, replayed one event a second after the host's start frame.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Go"
+          },
+          "agent": "claude",
+          "model": "claude-opus-4-7"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "every": 1,
+      "stream": "agentcli/claude__oauth_expired.expected.jsonl",
+      "take": 2
+    },
+    {
+      "at": 2.5,
+      "snapshot": "before-done"
+    },
+    {
+      "at": 3,
+      "every": 1,
+      "stream": "agentcli/claude__oauth_expired.expected.jsonl",
+      "skip": 2
+    },
+    {
+      "at": 4,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "before-done": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "s1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Patentage…",
+            "queued": false
+          },
+          "parts": []
+        },
+        {
+          "kind": "error",
+          "label": "Error · Claude Code",
+          "text": "Failed to authenticate: OAuth session expired and could not be refreshed",
+          "parts": []
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "s1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "error",
+          "label": "Error · Claude Code",
+          "text": "Failed to authenticate: OAuth session expired and could not be refreshed",
+          "parts": []
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

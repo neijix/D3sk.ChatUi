@@ -1,0 +1,499 @@
+{
+  "description": "A saved chat is loaded with a turn still running: saved parts render settled, the replayed start adds no duplicate.",
+  "projectRoot": "/work/app",
+  "steps": [
+    {
+      "at": 100,
+      "resume": {
+        "running": true,
+        "agent": "claude",
+        "model": "claude-sonnet-4-6",
+        "permissionMode": "manual",
+        "sessionId": "s-9",
+        "messages": [
+          {
+            "id": "u1",
+            "role": "user",
+            "content": "Look at the logs",
+            "attachments": [
+              {
+                "name": "app.log",
+                "size": 1200
+              }
+            ]
+          },
+          {
+            "id": "m1",
+            "role": "assistant",
+            "agent": "claude",
+            "model": "claude-opus-4-7",
+            "content": "",
+            "parts": [
+              {
+                "type": "thinking",
+                "text": "Logs first.",
+                "seconds": 12
+              },
+              {
+                "type": "tool",
+                "call_id": "t1",
+                "name": "Read",
+                "arguments": {
+                  "file_path": "/work/app/app.log"
+                },
+                "output": "ERROR db timeout",
+                "is_error": false,
+                "done": true
+              },
+              {
+                "type": "tool",
+                "call_id": "t2",
+                "name": "Bash",
+                "arguments": {
+                  "command": "systemctl restart db"
+                },
+                "approval": "allowed",
+                "output": "ok",
+                "is_error": false
+              },
+              {
+                "type": "tool",
+                "call_id": "t3",
+                "name": "Bash",
+                "arguments": {
+                  "command": "tail -f app.log"
+                },
+                "output": null
+              },
+              {
+                "type": "text",
+                "text": "The database timed out.\n<!-- d3skhand-title: DB timeout -->"
+              }
+            ]
+          },
+          {
+            "id": "e1",
+            "role": "error",
+            "agent": "claude",
+            "content": "The CLI stopped.",
+            "parts": [
+              {
+                "type": "tool",
+                "call_id": "t4",
+                "name": "Grep",
+                "arguments": {
+                  "pattern": "timeout"
+                },
+                "output": "3 matches",
+                "is_error": false
+              },
+              {
+                "type": "text",
+                "text": "ignored"
+              }
+            ]
+          },
+          {
+            "id": "u2",
+            "role": "user",
+            "content": "Restart it again"
+          },
+          {
+            "id": "m2",
+            "role": "assistant",
+            "agent": "claude",
+            "model": "claude-opus-4-7",
+            "content": "Plain saved text."
+          }
+        ],
+        "approvals": [
+          {
+            "approval_id": "a9",
+            "call_id": "t9",
+            "name": "Write",
+            "arguments": {
+              "file_path": "/work/app/notes.md",
+              "content": "line one\nline two\n"
+            },
+            "description": "Write notes"
+          }
+        ]
+      }
+    },
+    {
+      "at": 100,
+      "snapshot": "loaded"
+    },
+    {
+      "at": 101,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u2",
+            "content": "Restart it again"
+          },
+          "agent": "claude",
+          "model": "claude-sonnet-4-6"
+        }
+      ]
+    },
+    {
+      "at": 102,
+      "frame": [
+        "text",
+        {
+          "text": "Restarting."
+        }
+      ]
+    },
+    {
+      "at": 103,
+      "snapshot": "replayed"
+    }
+  ],
+  "snapshots": {
+    "loaded": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": "manual",
+      "sessionId": "s-9",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Look at the logs",
+          "attachments": [
+            "app.log"
+          ]
+        },
+        {
+          "kind": "assistant",
+          "id": "m1",
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "Logs first.",
+              "label": "Thought for 12s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "t1",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "app.log",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"file_path\": \"/work/app/app.log\"\n}",
+              "diff": null,
+              "output": "ERROR db timeout",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "t2",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "systemctl restart db",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "systemctl restart db",
+              "diff": null,
+              "output": "ok",
+              "outputShown": true,
+              "approval": {
+                "state": "allowed",
+                "label": "approved",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "t3",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "tail -f app.log",
+              "status": "unknown",
+              "statusLabel": "No result",
+              "input": "tail -f app.log",
+              "diff": null,
+              "output": "(no result — the turn ended first)",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "The database timed out."
+            }
+          ]
+        },
+        {
+          "kind": "error",
+          "label": "Error · Claude Code",
+          "text": "The CLI stopped.",
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "t4",
+              "name": "Grep",
+              "kind": "read",
+              "compact": true,
+              "summary": "timeout",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"pattern\": \"timeout\"\n}",
+              "diff": null,
+              "output": "3 matches",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        },
+        {
+          "kind": "user",
+          "id": "u2",
+          "text": "Restart it again",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": "m2",
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": false,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "Plain saved text."
+            }
+          ]
+        }
+      ],
+      "approvals": [
+        {
+          "approvalId": "a9",
+          "callId": "t9",
+          "isQuestion": false,
+          "title": "Claude Code wants to use Write",
+          "summary": "Write notes · notes.md",
+          "tool": "Write",
+          "kind": "write",
+          "input": null,
+          "diff": [
+            {
+              "kind": "add",
+              "text": "+ line one"
+            },
+            {
+              "kind": "add",
+              "text": "+ line two"
+            }
+          ],
+          "questions": []
+        }
+      ]
+    },
+    "replayed": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": "manual",
+      "sessionId": "s-9",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Look at the logs",
+          "attachments": [
+            "app.log"
+          ]
+        },
+        {
+          "kind": "assistant",
+          "id": "m1",
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "Logs first.",
+              "label": "Thought for 12s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "t1",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "app.log",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"file_path\": \"/work/app/app.log\"\n}",
+              "diff": null,
+              "output": "ERROR db timeout",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "t2",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "systemctl restart db",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "systemctl restart db",
+              "diff": null,
+              "output": "ok",
+              "outputShown": true,
+              "approval": {
+                "state": "allowed",
+                "label": "approved",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "t3",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "tail -f app.log",
+              "status": "unknown",
+              "statusLabel": "No result",
+              "input": "tail -f app.log",
+              "diff": null,
+              "output": "(no result — the turn ended first)",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "The database timed out."
+            }
+          ]
+        },
+        {
+          "kind": "error",
+          "label": "Error · Claude Code",
+          "text": "The CLI stopped.",
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "t4",
+              "name": "Grep",
+              "kind": "read",
+              "compact": true,
+              "summary": "timeout",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"pattern\": \"timeout\"\n}",
+              "diff": null,
+              "output": "3 matches",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        },
+        {
+          "kind": "user",
+          "id": "u2",
+          "text": "Restart it again",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": "m2",
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": false,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "Plain saved text."
+            }
+          ]
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Sonnet 4.6",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Restarting."
+            }
+          ]
+        }
+      ],
+      "approvals": [
+        {
+          "approvalId": "a9",
+          "callId": "t9",
+          "isQuestion": false,
+          "title": "Claude Code wants to use Write",
+          "summary": "Write notes · notes.md",
+          "tool": "Write",
+          "kind": "write",
+          "input": null,
+          "diff": [
+            {
+              "kind": "add",
+              "text": "+ line one"
+            },
+            {
+              "kind": "add",
+              "text": "+ line two"
+            }
+          ],
+          "questions": []
+        }
+      ]
+    }
+  }
+}

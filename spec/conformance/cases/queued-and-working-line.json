@@ -1,0 +1,672 @@
+{
+  "description": "A queued turn says so; once dequeued the working line follows the activity, goes quiet after text, and long hauls get their phrases.",
+  "projectRoot": "/work/app",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Run the migration"
+          },
+          "agent": "claude",
+          "model": "claude-opus-4-7",
+          "queued": true
+        }
+      ]
+    },
+    {
+      "at": 3,
+      "snapshot": "queued"
+    },
+    {
+      "at": 10,
+      "frame": [
+        "dequeued",
+        {}
+      ]
+    },
+    {
+      "at": 16,
+      "snapshot": "starting"
+    },
+    {
+      "at": 17,
+      "frame": [
+        "text",
+        {
+          "text": "Looking at the schema."
+        }
+      ]
+    },
+    {
+      "at": 19,
+      "snapshot": "writing"
+    },
+    {
+      "at": 20,
+      "snapshot": "quiet"
+    },
+    {
+      "at": 21,
+      "frame": [
+        "tool_call",
+        {
+          "call_id": "r1",
+          "name": "Read",
+          "arguments": {
+            "file_path": "/work/app/db/schema.sql",
+            "offset": 10,
+            "limit": 20
+          }
+        }
+      ]
+    },
+    {
+      "at": 21,
+      "snapshot": "searching"
+    },
+    {
+      "at": 22,
+      "frame": [
+        "tool_result",
+        {
+          "call_id": "r1",
+          "output": "CREATE TABLE users (...);",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "at": 30,
+      "frame": [
+        "tool_call",
+        {
+          "call_id": "s1",
+          "name": "Bash",
+          "arguments": {
+            "command": "npm run migrate\n--verbose"
+          }
+        }
+      ]
+    },
+    {
+      "at": 135,
+      "snapshot": "long-haul-shell"
+    },
+    {
+      "at": 140,
+      "snapshot": "long-haul-wired"
+    },
+    {
+      "at": 330,
+      "snapshot": "very-long"
+    },
+    {
+      "at": 335,
+      "snapshot": "very-long-haul"
+    },
+    {
+      "at": 340,
+      "frame": [
+        "tool_result",
+        {
+          "call_id": "s1",
+          "output": "",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "at": 341,
+      "frame": [
+        "text",
+        {
+          "text": "Migrated."
+        }
+      ]
+    },
+    {
+      "at": 342,
+      "frame": [
+        "done",
+        {
+          "returncode": 0
+        }
+      ]
+    },
+    {
+      "at": 343,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "queued": {
+      "busy": true,
+      "queued": true,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Run the migration",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Queued — starts on its own once the other chat in this project is done",
+            "queued": true
+          },
+          "parts": []
+        }
+      ],
+      "approvals": []
+    },
+    "starting": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Run the migration",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "En plein patentage…",
+            "queued": false
+          },
+          "parts": []
+        }
+      ],
+      "approvals": []
+    },
+    "writing": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Run the migration",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Un instant, je pitonne ça…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Looking at the schema."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "quiet": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Run the migration",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "Looking at the schema."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "searching": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Run the migration",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Pigrassage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Looking at the schema."
+            },
+            {
+              "type": "tool",
+              "callId": "r1",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "db/schema.sql · lines 10–29",
+              "status": "running",
+              "statusLabel": "Running",
+              "input": "{\n  \"file_path\": \"/work/app/db/schema.sql\",\n  \"offset\": 10,\n  \"limit\": 20\n}",
+              "diff": null,
+              "output": "…",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "long-haul-shell": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Run the migration",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Je gosse là-dessus…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Looking at the schema."
+            },
+            {
+              "type": "tool",
+              "callId": "r1",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "db/schema.sql · lines 10–29",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"file_path\": \"/work/app/db/schema.sql\",\n  \"offset\": 10,\n  \"limit\": 20\n}",
+              "diff": null,
+              "output": "CREATE TABLE users (...);",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "s1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "npm run migrate",
+              "status": "running",
+              "statusLabel": "Running",
+              "input": "npm run migrate\n--verbose",
+              "diff": null,
+              "output": "…",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "long-haul-wired": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Run the migration",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Je démêle les fils…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Looking at the schema."
+            },
+            {
+              "type": "tool",
+              "callId": "r1",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "db/schema.sql · lines 10–29",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"file_path\": \"/work/app/db/schema.sql\",\n  \"offset\": 10,\n  \"limit\": 20\n}",
+              "diff": null,
+              "output": "CREATE TABLE users (...);",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "s1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "npm run migrate",
+              "status": "running",
+              "statusLabel": "Running",
+              "input": "npm run migrate\n--verbose",
+              "diff": null,
+              "output": "…",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "very-long": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Run the migration",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Gossage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Looking at the schema."
+            },
+            {
+              "type": "tool",
+              "callId": "r1",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "db/schema.sql · lines 10–29",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"file_path\": \"/work/app/db/schema.sql\",\n  \"offset\": 10,\n  \"limit\": 20\n}",
+              "diff": null,
+              "output": "CREATE TABLE users (...);",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "s1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "npm run migrate",
+              "status": "running",
+              "statusLabel": "Running",
+              "input": "npm run migrate\n--verbose",
+              "diff": null,
+              "output": "…",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "very-long-haul": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Run the migration",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Ça demande pas mal de jus…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Looking at the schema."
+            },
+            {
+              "type": "tool",
+              "callId": "r1",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "db/schema.sql · lines 10–29",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"file_path\": \"/work/app/db/schema.sql\",\n  \"offset\": 10,\n  \"limit\": 20\n}",
+              "diff": null,
+              "output": "CREATE TABLE users (...);",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "s1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "npm run migrate",
+              "status": "running",
+              "statusLabel": "Running",
+              "input": "npm run migrate\n--verbose",
+              "diff": null,
+              "output": "…",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Run the migration",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "Looking at the schema."
+            },
+            {
+              "type": "tool",
+              "callId": "r1",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "db/schema.sql · lines 10–29",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"file_path\": \"/work/app/db/schema.sql\",\n  \"offset\": 10,\n  \"limit\": 20\n}",
+              "diff": null,
+              "output": "CREATE TABLE users (...);",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "s1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "npm run migrate",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "npm run migrate\n--verbose",
+              "diff": null,
+              "output": "(no output)",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "Migrated."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

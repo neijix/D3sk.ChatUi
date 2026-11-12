@@ -1,0 +1,189 @@
+{
+  "$comment": "The one source of the chat's look and words. D3sk.ChatUi embeds this file and @d3sk/chat-ui imports it: change a colour or a sentence here, never in either front-end. Taken from D3SKHAND's hub (style.css, labels.js, transcript.js, stream.js, approvals.js) and AgentCliBridge's /acb box.",
+  "version": 1,
+  "tokens": {
+    "palettes": {
+      "default": "teal",
+      "order": ["teal", "slate", "midnight", "ocean", "forest", "dusk"],
+      "values": {
+        "teal": { "bg": "#13242d", "panel": "#0f1c23", "panel2": "#1a323d", "border": "#25424f", "text": "#d3dce1", "strong": "#eef3f5", "muted": "#869aa4", "userBg": "#17303c", "userBorder": "#2a4d5d", "codeBg": "#0e1b22", "rail": "#27424e" },
+        "slate": { "bg": "#1e1e1e", "panel": "#181818", "panel2": "#2a2a2a", "border": "#3c3c3c", "text": "#d4d4d4", "strong": "#f3f3f3", "muted": "#919191", "userBg": "#252526", "userBorder": "#3e3e42", "codeBg": "#1a1a1a", "rail": "#3c3c3c" },
+        "midnight": { "bg": "#0b0d12", "panel": "#08090d", "panel2": "#161922", "border": "#2a3140", "text": "#d5dae3", "strong": "#f0f3f8", "muted": "#7b8494", "userBg": "#12151c", "userBorder": "#2c3444", "codeBg": "#07080c", "rail": "#2a3140" },
+        "ocean": { "bg": "#101825", "panel": "#0c121c", "panel2": "#182436", "border": "#2a3c55", "text": "#d2dbe8", "strong": "#eef3fa", "muted": "#7d8da3", "userBg": "#152033", "userBorder": "#2c4460", "codeBg": "#0b111a", "rail": "#2a3c55" },
+        "forest": { "bg": "#121a14", "panel": "#0d140f", "panel2": "#1a261c", "border": "#2a3c2e", "text": "#d4ddd6", "strong": "#eef5f0", "muted": "#7d8f82", "userBg": "#16201a", "userBorder": "#2c4234", "codeBg": "#0c130e", "rail": "#2a3c2e" },
+        "dusk": { "bg": "#1c1614", "panel": "#161210", "panel2": "#2a221e", "border": "#3d332d", "text": "#e0d6cf", "strong": "#f5eee8", "muted": "#96887f", "userBg": "#241e1a", "userBorder": "#443830", "codeBg": "#14100e", "rail": "#3d332d" }
+      }
+    },
+    "actions": {
+      "accent": "#4a9df8",
+      "accentStrong": "#2f86e6",
+      "brand": "#00e0b8",
+      "claude": "#d97757",
+      "danger": "#e5534b",
+      "warning": "#e3b341",
+      "ok": "#3fb950",
+      "codeText": "#d9b97c",
+      "errorText": "#ffb3ad",
+      "diffAddBg": "#3fb95024",
+      "diffAddText": "#b4f0bd",
+      "diffDelBg": "#e5534b24",
+      "diffDelText": "#ffc4bf"
+    },
+    "brands": {
+      "claude": "#d97757",
+      "openai": "#19c39a",
+      "grok": "#e8edf0",
+      "copilot": "#a78bfa",
+      "cursor": "#e8edf0",
+      "mlx": "#4a9df8",
+      "colibri": "#4a9df8",
+      "gemini": "#9b72cb",
+      "d3skhand": "#00e0b8"
+    },
+    "typography": {
+      "minimum": 13,
+      "small": 13,
+      "body": 14,
+      "heading": 16,
+      "code": 13,
+      "lineHeight": 1.6,
+      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Inter, Roboto, sans-serif",
+      "monoFamily": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+    },
+    "radius": { "box": 8, "user": 7, "tool": 6, "badge": 4 },
+    "spacing": { "messageGap": 14, "railIndent": 26, "partGap": 5, "columnMax": 980 },
+    "contrast": { "minimumRatio": 4.5 }
+  },
+  "labels": {
+    "working": {
+      "phrases": {
+        "starting": ["Patentage…", "En plein patentage…"],
+        "thinking": ["Zigonnage…", "Je me casse le bicycle…"],
+        "searching": ["Pigrassage…", "Je gratte le fond du baril…"],
+        "shell": ["Gossage…", "Je gosse là-dessus…"],
+        "editing": ["Bizounage…", "Picossage…"],
+        "writing": ["Pitonnage…", "Un instant, je pitonne ça…"],
+        "handling": ["Taponnage…", "Schleppage…"],
+        "assembling": ["Raboutinage…", "Je raboutine des morceaux…"],
+        "wrapping": ["Brochage…", "Pitonnage…"],
+        "recovering": ["M'm'arranger avec le trouble…", "Picossage…"]
+      },
+      "longHaul": ["Le processeur est dans le prélart…", "Ça chauffe sous le capot…", "Je bûche sur le problème…", "Ça demande pas mal de jus…", "Je démêle les fils…"],
+      "words": ["Patentage", "Gossage", "Zigonnage", "Bizounage", "Pitonnage", "Picossage", "Taponnage", "Pigrassage", "Raboutinage", "Brochage", "Schleppage"],
+      "stepSeconds": 5,
+      "longSeconds": 120,
+      "veryLongSeconds": 300,
+      "quietSeconds": 2.5
+    },
+    "lines": {
+      "queued": "Queued — starts on its own once the other chat in this project is done",
+      "sending": "Sending — getting the chat ready…",
+      "terminalWorking": "Working in the terminal — its reply comes in here as it writes"
+    },
+    "status": {
+      "queued": "Queued",
+      "running": "Working",
+      "resumes": "Resumes {when}",
+      "soon": "soon",
+      "error": "Error",
+      "done": "Done",
+      "weekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    },
+    "thinking": {
+      "streaming": "Thinking…",
+      "streamingTokens": "Thinking… · {tokens} tokens",
+      "thoughtFor": "Thought for {duration}",
+      "thought": "Thought"
+    },
+    "tools": {
+      "labels": {
+        "bash": "Bash", "shell": "Bash", "run_terminal_command": "Bash", "run_shell_command": "Bash", "run_command": "Bash",
+        "read": "Read", "read_file": "Read", "view_file": "Read", "view": "Read", "grep": "Grep", "glob": "Glob", "glob_file_search": "Glob",
+        "list": "List", "list_dir": "List", "webfetch": "WebFetch", "websearch": "WebSearch",
+        "search_replace": "Edit", "edit_file": "Edit", "str_replace": "Edit", "replace": "Edit", "edit": "Edit",
+        "write": "Write", "write_file": "Write", "create_file": "Write", "create": "Write", "todo_write": "TodoWrite", "todowrite": "TodoWrite"
+      },
+      "kinds": {
+        "Bash": "shell", "Read": "read", "Grep": "read", "Glob": "read", "List": "read", "LS": "read", "WebFetch": "read",
+        "WebSearch": "read", "ToolSearch": "read", "codebase_search": "read", "Edit": "edit", "MultiEdit": "edit", "Write": "write"
+      },
+      "fallbackName": "tool",
+      "status": { "running": "Running", "ok": "Succeeded", "error": "Failed", "unknown": "No result" },
+      "output": {
+        "running": "…",
+        "empty": "(no output)",
+        "noResult": "(no result — the turn ended first)"
+      },
+      "io": { "in": "IN", "out": "OUT" },
+      "summaryMax": 140,
+      "pathKeys": ["file_path", "filePath", "target_file", "AbsolutePath", "notebook_path", "path", "target_directory"],
+      "patternKeys": ["pattern", "Pattern", "query", "url"],
+      "summaryKeys": ["description", "command", "CommandLine", "pattern", "Pattern", "query", "url", "file_path", "filePath", "target_file", "AbsolutePath", "notebook_path", "path", "target_directory"],
+      "readLines": " · lines {from}–{to}",
+      "fix": "Fix",
+      "fixTitle": "Open a chat that finds why this failed and fixes it"
+    },
+    "approval": {
+      "badges": {
+        "waiting": "waiting for approval",
+        "allowed": "approved",
+        "denied": "denied",
+        "blocked": "blocked by injection guard"
+      },
+      "waitingTitle": "Review what the agent wants to run",
+      "blockedTitle": "Open the details in AgentCliBridge's security log",
+      "injection": "possible prompt injection",
+      "injectionTitle": "Instructions aimed at an AI were found in this result ({rules}). Actions beyond reading are blocked for the rest of this reply.",
+      "title": "{agent} wants to use {tool}",
+      "questionTitle": "{agent} has a question",
+      "agentFallback": "The agent",
+      "questionSummary": "Pick an answer to continue.",
+      "fallbackTitle": "Approval needed",
+      "count": "{index} of {count}",
+      "messagePlaceholder": "Optional — why, or what to do instead (the agent reads it if you deny)",
+      "later": "Later",
+      "skip": "Skip",
+      "deny": "Deny",
+      "allow": "Allow",
+      "send": "Send answers",
+      "banner": "The agent is waiting for your approval — review",
+      "other": "Other…",
+      "otherDescription": "Write your own answer",
+      "ownPlaceholder": "Your answer — Ctrl/⌘+Enter to send",
+      "multiHint": "Choose one or more",
+      "ownAnswerLength": 4000
+    },
+    "permissions": {
+      "default": "acceptEdits",
+      "modes": [
+        ["plan", "Plan — read-only"],
+        ["manual", "Ask"],
+        ["acceptEdits", "Accept edits"],
+        ["auto", "Auto"],
+        ["dontAsk", "Don't ask"],
+        ["bypassPermissions", "Bypass permissions"]
+      ]
+    },
+    "notices": {
+      "modeNow": "Now in {mode} — from the next step on.",
+      "modeStill": "Still in {mode}: {error}"
+    },
+    "errors": {
+      "label": "Error",
+      "labelWithAgent": "Error · {agent}"
+    },
+    "transcript": {
+      "empty": "No messages yet.",
+      "jumpToBottom": "Jump to bottom",
+      "ariaLabel": "Conversation"
+    }
+  },
+  "limits": {
+    "maxAttachments": 10,
+    "maxAttachmentBytes": 10485760,
+    "maxTotalBytes": 26214400,
+    "clipLines": 6,
+    "clipChars": 600,
+    "bottomThreshold": 80
+  }
+}

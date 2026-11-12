@@ -1,0 +1,162 @@
+{
+  "description": "The hidden title line is never shown: neither while it arrives nor once whole.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Name this"
+          },
+          "agent": "claude",
+          "model": "claude-opus-4-7"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "frame": [
+        "text",
+        {
+          "text": "Here it is.\n<!-- d3skhand-ti"
+        }
+      ]
+    },
+    {
+      "at": 1.2,
+      "snapshot": "partial"
+    },
+    {
+      "at": 1.5,
+      "frame": [
+        "text",
+        {
+          "text": "tle: Naming things -->\n"
+        }
+      ]
+    },
+    {
+      "at": 1.6,
+      "snapshot": "whole"
+    },
+    {
+      "at": 2,
+      "frame": [
+        "done",
+        {
+          "returncode": 0
+        }
+      ]
+    },
+    {
+      "at": 3,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "partial": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Name this",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Here it is."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "whole": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Name this",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "Here it is."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Name this",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "Here it is."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

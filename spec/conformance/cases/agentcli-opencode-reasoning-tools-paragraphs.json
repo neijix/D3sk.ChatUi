@@ -1,0 +1,196 @@
+{
+  "description": "D3sk.AgentCli's opencode__reasoning_tools_paragraphs stream, replayed one event a second after the host's start frame.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Go"
+          },
+          "agent": "opencode",
+          "model": "openrouter/qwen3-coder"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "every": 1,
+      "stream": "agentcli/opencode__reasoning_tools_paragraphs.expected.jsonl",
+      "take": 8
+    },
+    {
+      "at": 8.5,
+      "snapshot": "before-done"
+    },
+    {
+      "at": 9,
+      "every": 1,
+      "stream": "agentcli/opencode__reasoning_tools_paragraphs.expected.jsonl",
+      "skip": 8
+    },
+    {
+      "at": 10,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "before-done": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "ses_1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "OpenCode · openrouter/qwen3-coder",
+          "showLabel": true,
+          "brand": "d3skhand",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "Read it first.",
+              "label": "Thought for 1s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "call_1",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "/p/note.txt",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"filePath\": \"/p/note.txt\"\n}",
+              "diff": null,
+              "output": "1: hello",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "call_2",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "ls /",
+              "status": "error",
+              "statusLabel": "Failed",
+              "input": "ls /",
+              "diff": null,
+              "output": "The user rejected permission to use this specific tool call.",
+              "outputShown": true,
+              "approval": {
+                "state": "denied",
+                "label": "denied",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "It says hello.\n\nDone."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "ses_1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "OpenCode · openrouter/qwen3-coder",
+          "showLabel": true,
+          "brand": "d3skhand",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "Read it first.",
+              "label": "Thought for 1s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "call_1",
+              "name": "Read",
+              "kind": "read",
+              "compact": true,
+              "summary": "/p/note.txt",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "{\n  \"filePath\": \"/p/note.txt\"\n}",
+              "diff": null,
+              "output": "1: hello",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "call_2",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "ls /",
+              "status": "error",
+              "statusLabel": "Failed",
+              "input": "ls /",
+              "diff": null,
+              "output": "The user rejected permission to use this specific tool call.",
+              "outputShown": true,
+              "approval": {
+                "state": "denied",
+                "label": "denied",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "It says hello.\n\nDone."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

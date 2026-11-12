@@ -1,0 +1,498 @@
+{
+  "description": "Ask mode: a Bash call is approved, an Edit is denied; badges, the queue and the working line follow.",
+  "projectRoot": "/work/app",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Fix the build"
+          },
+          "agent": "claude",
+          "model": "claude-opus-4-7"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "frame": [
+        "tool_call",
+        {
+          "call_id": "t1",
+          "name": "Bash",
+          "arguments": {
+            "command": "npm test",
+            "description": "Run the tests"
+          }
+        }
+      ]
+    },
+    {
+      "at": 1.5,
+      "frame": [
+        "approval_request",
+        {
+          "approval_id": "a1",
+          "call_id": "t1",
+          "name": "Bash",
+          "arguments": {
+            "command": "npm test",
+            "description": "Run the tests"
+          },
+          "description": "Run the tests"
+        }
+      ]
+    },
+    {
+      "at": 3,
+      "snapshot": "waiting-bash"
+    },
+    {
+      "at": 4,
+      "frame": [
+        "approval_resolved",
+        {
+          "approval_id": "a1",
+          "allow": true
+        }
+      ]
+    },
+    {
+      "at": 6,
+      "frame": [
+        "tool_result",
+        {
+          "call_id": "t1",
+          "output": "1 failing\n  ✗ adds numbers",
+          "is_error": true
+        }
+      ]
+    },
+    {
+      "at": 7,
+      "frame": [
+        "tool_call",
+        {
+          "call_id": "t2",
+          "name": "Edit",
+          "arguments": {
+            "file_path": "/work/app/src/add.js",
+            "old_string": "return a - b;",
+            "new_string": "return a + b;"
+          }
+        }
+      ]
+    },
+    {
+      "at": 7.5,
+      "frame": [
+        "approval_request",
+        {
+          "approval_id": "a2",
+          "call_id": "t2",
+          "name": "Edit",
+          "arguments": {
+            "file_path": "/work/app/src/add.js",
+            "old_string": "return a - b;",
+            "new_string": "return a + b;"
+          },
+          "description": ""
+        }
+      ]
+    },
+    {
+      "at": 8,
+      "snapshot": "waiting-edit"
+    },
+    {
+      "at": 9,
+      "frame": [
+        "approval_resolved",
+        {
+          "approval_id": "a2",
+          "allow": false
+        }
+      ]
+    },
+    {
+      "at": 9.2,
+      "frame": [
+        "tool_result",
+        {
+          "call_id": "t2",
+          "output": "The user rejected permission to use this specific tool call.",
+          "is_error": true
+        }
+      ]
+    },
+    {
+      "at": 10,
+      "frame": [
+        "text",
+        {
+          "text": "You denied the edit, so `add.js` still subtracts."
+        }
+      ]
+    },
+    {
+      "at": 11,
+      "snapshot": "after-text"
+    },
+    {
+      "at": 14,
+      "frame": [
+        "done",
+        {
+          "returncode": 0
+        }
+      ]
+    },
+    {
+      "at": 15,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "waiting-bash": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Fix the build",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Gossage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "t1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "Run the tests",
+              "status": "running",
+              "statusLabel": "Running",
+              "input": "npm test",
+              "diff": null,
+              "output": "…",
+              "outputShown": true,
+              "approval": {
+                "state": "waiting",
+                "label": "waiting for approval",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        }
+      ],
+      "approvals": [
+        {
+          "approvalId": "a1",
+          "callId": "t1",
+          "isQuestion": false,
+          "title": "Claude Code wants to use Bash",
+          "summary": "Run the tests",
+          "tool": "Bash",
+          "kind": "shell",
+          "input": "npm test",
+          "diff": null,
+          "questions": []
+        }
+      ]
+    },
+    "waiting-edit": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Fix the build",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Picossage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "t1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "Run the tests",
+              "status": "error",
+              "statusLabel": "Failed",
+              "input": "npm test",
+              "diff": null,
+              "output": "1 failing\n  ✗ adds numbers",
+              "outputShown": true,
+              "approval": {
+                "state": "allowed",
+                "label": "approved",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": true
+            },
+            {
+              "type": "tool",
+              "callId": "t2",
+              "name": "Edit",
+              "kind": "edit",
+              "compact": false,
+              "summary": "src/add.js",
+              "status": "running",
+              "statusLabel": "Running",
+              "input": null,
+              "diff": [
+                {
+                  "kind": "del",
+                  "text": "- return a - b;"
+                },
+                {
+                  "kind": "add",
+                  "text": "+ return a + b;"
+                }
+              ],
+              "output": "…",
+              "outputShown": false,
+              "approval": {
+                "state": "waiting",
+                "label": "waiting for approval",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": false
+            }
+          ]
+        }
+      ],
+      "approvals": [
+        {
+          "approvalId": "a2",
+          "callId": "t2",
+          "isQuestion": false,
+          "title": "Claude Code wants to use Edit",
+          "summary": "src/add.js",
+          "tool": "Edit",
+          "kind": "edit",
+          "input": null,
+          "diff": [
+            {
+              "kind": "del",
+              "text": "- return a - b;"
+            },
+            {
+              "kind": "add",
+              "text": "+ return a + b;"
+            }
+          ],
+          "questions": []
+        }
+      ]
+    },
+    "after-text": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Fix the build",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Brochage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "t1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "Run the tests",
+              "status": "error",
+              "statusLabel": "Failed",
+              "input": "npm test",
+              "diff": null,
+              "output": "1 failing\n  ✗ adds numbers",
+              "outputShown": true,
+              "approval": {
+                "state": "allowed",
+                "label": "approved",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": true
+            },
+            {
+              "type": "tool",
+              "callId": "t2",
+              "name": "Edit",
+              "kind": "edit",
+              "compact": false,
+              "summary": "src/add.js",
+              "status": "error",
+              "statusLabel": "Failed",
+              "input": null,
+              "diff": [
+                {
+                  "kind": "del",
+                  "text": "- return a - b;"
+                },
+                {
+                  "kind": "add",
+                  "text": "+ return a + b;"
+                }
+              ],
+              "output": "The user rejected permission to use this specific tool call.",
+              "outputShown": true,
+              "approval": {
+                "state": "denied",
+                "label": "denied",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "You denied the edit, so `add.js` still subtracts."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Fix the build",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "tool",
+              "callId": "t1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "Run the tests",
+              "status": "error",
+              "statusLabel": "Failed",
+              "input": "npm test",
+              "diff": null,
+              "output": "1 failing\n  ✗ adds numbers",
+              "outputShown": true,
+              "approval": {
+                "state": "allowed",
+                "label": "approved",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": true
+            },
+            {
+              "type": "tool",
+              "callId": "t2",
+              "name": "Edit",
+              "kind": "edit",
+              "compact": false,
+              "summary": "src/add.js",
+              "status": "error",
+              "statusLabel": "Failed",
+              "input": null,
+              "diff": [
+                {
+                  "kind": "del",
+                  "text": "- return a - b;"
+                },
+                {
+                  "kind": "add",
+                  "text": "+ return a + b;"
+                }
+              ],
+              "output": "The user rejected permission to use this specific tool call.",
+              "outputShown": true,
+              "approval": {
+                "state": "denied",
+                "label": "denied",
+                "detailsUrl": null
+              },
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "You denied the edit, so `add.js` still subtracts."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

@@ -12,7 +12,7 @@ public class ToolSummaryTests
         {
             dir = dir.Parent;
         }
-        return Path.Combine(dir?.FullName ?? throw new InvalidOperationException("repo root not found"), "tests", "fixtures", "ui", "tool-summary.json");
+        return Path.Combine(dir?.FullName ?? throw new InvalidOperationException("repo root not found"), "spec", "corpus", "ui", "tool-summary.json");
     }
 
     [Fact]

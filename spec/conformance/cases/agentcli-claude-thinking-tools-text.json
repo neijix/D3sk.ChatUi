@@ -1,0 +1,188 @@
+{
+  "description": "D3sk.AgentCli's claude__thinking_tools_text stream, replayed one event a second after the host's start frame.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Go"
+          },
+          "agent": "claude",
+          "model": "claude-opus-4-7"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "every": 1,
+      "stream": "agentcli/claude__thinking_tools_text.expected.jsonl",
+      "take": 6
+    },
+    {
+      "at": 6.5,
+      "snapshot": "before-done"
+    },
+    {
+      "at": 7,
+      "every": 1,
+      "stream": "agentcli/claude__thinking_tools_text.expected.jsonl",
+      "skip": 6
+    },
+    {
+      "at": 8,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "before-done": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "s1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "Let me look",
+              "label": "Thought for 1s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "t1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "List",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "ls",
+              "diff": null,
+              "output": "a\nb",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "t2",
+              "name": "tool",
+              "kind": "other",
+              "compact": false,
+              "summary": "",
+              "status": "error",
+              "statusLabel": "Failed",
+              "input": "",
+              "diff": null,
+              "output": "denied",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": true
+            },
+            {
+              "type": "text",
+              "text": "Two files."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "s1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "Let me look",
+              "label": "Thought for 1s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "t1",
+              "name": "Bash",
+              "kind": "shell",
+              "compact": false,
+              "summary": "List",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "ls",
+              "diff": null,
+              "output": "a\nb",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "tool",
+              "callId": "t2",
+              "name": "tool",
+              "kind": "other",
+              "compact": false,
+              "summary": "",
+              "status": "error",
+              "statusLabel": "Failed",
+              "input": "",
+              "diff": null,
+              "output": "denied",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": true
+            },
+            {
+              "type": "text",
+              "text": "Two files."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

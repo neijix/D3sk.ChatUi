@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageId>D3sk.ChatUi</PackageId>
-    <Description>Chat transcript rules for D3SKHAND with no UI types: markdown to safe HTML, status labels, view models.</Description>
+    <Description>D3SKHAND's chat rules with no UI types: the session that folds D3sk.AgentCli turn events into what the chat shows, labels, tool summaries, markdown to safe HTML. Shared spec with the web package @d3sk/chat-ui.</Description>
     <Authors>neijix</Authors>
     <Copyright>Copyright (c) 2026 neijix</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -15,5 +15,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="../../README.md" Pack="true" PackagePath="/" />
+    <!-- The shared spec: the web package @d3sk/chat-ui reads the same file. -->
+    <EmbeddedResource Include="../../spec/chat-ui.json" LogicalName="D3sk.ChatUi.chat-ui.json" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,234 @@
+{
+  "description": "A reply names its subscription · model only when it differs from the reply before.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "One"
+          },
+          "agent": "claude",
+          "model": "claude-opus-4-7"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "frame": [
+        "text",
+        {
+          "text": "First."
+        }
+      ]
+    },
+    {
+      "at": 2,
+      "frame": [
+        "done",
+        {
+          "returncode": 0
+        }
+      ]
+    },
+    {
+      "at": 3,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u2",
+            "content": "Two"
+          },
+          "agent": "grok",
+          "model": "grok-4"
+        }
+      ]
+    },
+    {
+      "at": 4,
+      "frame": [
+        "text",
+        {
+          "text": "Second."
+        }
+      ]
+    },
+    {
+      "at": 5,
+      "frame": [
+        "done",
+        {
+          "returncode": 0
+        }
+      ]
+    },
+    {
+      "at": 6,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u3",
+            "content": "Three"
+          },
+          "agent": "grok",
+          "model": "grok-4"
+        }
+      ]
+    },
+    {
+      "at": 7,
+      "frame": [
+        "text",
+        {
+          "text": "Third."
+        }
+      ]
+    },
+    {
+      "at": 8,
+      "frame": [
+        "done",
+        {
+          "returncode": 0
+        }
+      ]
+    },
+    {
+      "at": 9,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u4",
+            "content": "Four"
+          },
+          "agent": "mystery",
+          "model": ""
+        }
+      ]
+    },
+    {
+      "at": 10,
+      "frame": [
+        "text",
+        {
+          "text": "Fourth."
+        }
+      ]
+    },
+    {
+      "at": 11,
+      "frame": [
+        "done",
+        {
+          "returncode": 0
+        }
+      ]
+    },
+    {
+      "at": 12,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "One",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Claude Code · Opus 4.7",
+          "showLabel": true,
+          "brand": "claude",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "First."
+            }
+          ]
+        },
+        {
+          "kind": "user",
+          "id": "u2",
+          "text": "Two",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Grok · Grok 4",
+          "showLabel": true,
+          "brand": "grok",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "Second."
+            }
+          ]
+        },
+        {
+          "kind": "user",
+          "id": "u3",
+          "text": "Three",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Grok · Grok 4",
+          "showLabel": false,
+          "brand": "grok",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "Third."
+            }
+          ]
+        },
+        {
+          "kind": "user",
+          "id": "u4",
+          "text": "Four",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "mystery",
+          "showLabel": true,
+          "brand": "d3skhand",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "Fourth."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

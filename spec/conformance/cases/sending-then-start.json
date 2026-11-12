@@ -1,0 +1,116 @@
+{
+  "description": "The message just sent shows with Sending… until the start frame; a failed send takes it back.",
+  "steps": [
+    {
+      "at": 0,
+      "sending": {
+        "text": "Hello",
+        "attachments": [
+          "a.png"
+        ],
+        "agent": "grok",
+        "model": "grok-4"
+      }
+    },
+    {
+      "at": 0.5,
+      "snapshot": "sending"
+    },
+    {
+      "at": 1,
+      "cancelSending": true
+    },
+    {
+      "at": 1,
+      "snapshot": "cancelled"
+    },
+    {
+      "at": 2,
+      "sending": {
+        "text": "Hello again",
+        "agent": "grok",
+        "model": "grok-4"
+      }
+    },
+    {
+      "at": 3,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Hello again"
+          },
+          "agent": "grok",
+          "model": "grok-4"
+        }
+      ]
+    },
+    {
+      "at": 3,
+      "snapshot": "started"
+    }
+  ],
+  "snapshots": {
+    "sending": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": {
+        "text": "Hello",
+        "attachments": [
+          "a.png"
+        ],
+        "brand": "grok",
+        "working": {
+          "text": "Sending — getting the chat ready…",
+          "queued": false
+        }
+      },
+      "rows": [],
+      "approvals": []
+    },
+    "cancelled": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [],
+      "approvals": []
+    },
+    "started": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": null,
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Hello again",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "Grok · Grok 4",
+          "showLabel": true,
+          "brand": "grok",
+          "live": true,
+          "working": {
+            "text": "Patentage…",
+            "queued": false
+          },
+          "parts": []
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

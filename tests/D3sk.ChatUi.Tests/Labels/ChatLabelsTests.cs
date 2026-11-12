@@ -5,7 +5,7 @@ using D3sk.ChatUi.Labels;
 
 namespace D3sk.ChatUi.Tests.Labels;
 
-/// <summary>Equal to row 6's corpus (d3skhand tests/fixtures/ui), copied under the manifest rule.</summary>
+/// <summary>Equal to row 6's corpus (d3skhand tests/fixtures/ui, kept in spec/corpus/ui), copied under the manifest rule.</summary>
 public sealed class ChatLabelsTests
 {
     private static string FixtureDir()
@@ -15,7 +15,7 @@ public sealed class ChatLabelsTests
         {
             dir = dir.Parent;
         }
-        return Path.Combine(dir?.FullName ?? throw new InvalidOperationException("repo root not found"), "tests", "fixtures", "ui");
+        return Path.Combine(dir?.FullName ?? throw new InvalidOperationException("repo root not found"), "spec", "corpus", "ui");
     }
 
     private static JsonArray Cases(string name) =>

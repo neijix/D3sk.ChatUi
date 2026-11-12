@@ -1,0 +1,271 @@
+{
+  "description": "A host that feeds raw AgentCli events with no start frame still gets a reply.",
+  "steps": [
+    {
+      "at": 0,
+      "event": {
+        "event": "SessionUpdate",
+        "session_id": "raw-1"
+      }
+    },
+    {
+      "at": 1,
+      "event": {
+        "event": "ThinkingDelta",
+        "text": "plan"
+      }
+    },
+    {
+      "at": 2,
+      "event": {
+        "event": "ToolCall",
+        "call_id": "c1",
+        "name": "ls",
+        "arguments": null
+      }
+    },
+    {
+      "at": 3,
+      "event": {
+        "event": "ToolResult",
+        "call_id": "c1",
+        "output": "a\nb",
+        "is_error": false,
+        "raw": "x"
+      }
+    },
+    {
+      "at": 3.5,
+      "event": {
+        "event": "Notice",
+        "text": "Loading the model…",
+        "kind": "loading"
+      }
+    },
+    {
+      "at": 4,
+      "event": {
+        "event": "ApprovalRequest",
+        "request_id": "r1",
+        "call_id": "c2",
+        "name": "Bash",
+        "arguments": {
+          "command": "make"
+        },
+        "description": ""
+      }
+    },
+    {
+      "at": 4.5,
+      "event": {
+        "event": "ModeChanged",
+        "mode": "acceptEdits",
+        "error": ""
+      }
+    },
+    {
+      "at": 5,
+      "event": {
+        "event": "TextDelta",
+        "text": "Two files."
+      }
+    },
+    {
+      "at": 5.5,
+      "event": {
+        "event": "InputAccepted",
+        "text": "and hidden ones?"
+      }
+    },
+    {
+      "at": 6,
+      "event": {
+        "event": "TextDelta",
+        "text": "No hidden ones."
+      }
+    },
+    {
+      "at": 6.5,
+      "snapshot": "streaming"
+    },
+    {
+      "at": 7,
+      "event": {
+        "event": "Completed",
+        "returncode": 0
+      }
+    },
+    {
+      "at": 8,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "streaming": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": "acceptEdits",
+      "sessionId": "raw-1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "",
+          "showLabel": false,
+          "brand": "d3skhand",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "plan",
+              "label": "Thought for 1s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "c1",
+              "name": "ls",
+              "kind": "other",
+              "compact": false,
+              "summary": "",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "",
+              "diff": null,
+              "output": "a\nb",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "Two files."
+            }
+          ]
+        },
+        {
+          "kind": "notice",
+          "text": "Loading the model…",
+          "transient": false
+        },
+        {
+          "kind": "user",
+          "id": null,
+          "text": "and hidden ones?",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "",
+          "showLabel": false,
+          "brand": "d3skhand",
+          "live": true,
+          "working": {
+            "text": "Pitonnage…",
+            "queued": false
+          },
+          "parts": [
+            {
+              "type": "text",
+              "text": "No hidden ones."
+            }
+          ]
+        }
+      ],
+      "approvals": [
+        {
+          "approvalId": "r1",
+          "callId": "c2",
+          "isQuestion": false,
+          "title": "The agent wants to use Bash",
+          "summary": "make",
+          "tool": "Bash",
+          "kind": "shell",
+          "input": "make",
+          "diff": null,
+          "questions": []
+        }
+      ]
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": "acceptEdits",
+      "sessionId": "raw-1",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "",
+          "showLabel": false,
+          "brand": "d3skhand",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "thinking",
+              "text": "plan",
+              "label": "Thought for 1s",
+              "open": false
+            },
+            {
+              "type": "tool",
+              "callId": "c1",
+              "name": "ls",
+              "kind": "other",
+              "compact": false,
+              "summary": "",
+              "status": "ok",
+              "statusLabel": "Succeeded",
+              "input": "",
+              "diff": null,
+              "output": "a\nb",
+              "outputShown": true,
+              "approval": null,
+              "injection": null,
+              "fixable": false
+            },
+            {
+              "type": "text",
+              "text": "Two files."
+            }
+          ]
+        },
+        {
+          "kind": "notice",
+          "text": "Loading the model…",
+          "transient": false
+        },
+        {
+          "kind": "user",
+          "id": null,
+          "text": "and hidden ones?",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "",
+          "showLabel": false,
+          "brand": "d3skhand",
+          "live": false,
+          "working": null,
+          "parts": [
+            {
+              "type": "text",
+              "text": "No hidden ones."
+            }
+          ]
+        }
+      ],
+      "approvals": []
+    }
+  }
+}

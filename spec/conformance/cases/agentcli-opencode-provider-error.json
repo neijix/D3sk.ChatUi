@@ -1,0 +1,100 @@
+{
+  "description": "D3sk.AgentCli's opencode__provider_error stream, replayed one event a second after the host's start frame.",
+  "steps": [
+    {
+      "at": 0,
+      "frame": [
+        "start",
+        {
+          "user_message": {
+            "id": "u1",
+            "content": "Go"
+          },
+          "agent": "opencode",
+          "model": "openrouter/qwen3-coder"
+        }
+      ]
+    },
+    {
+      "at": 1,
+      "every": 1,
+      "stream": "agentcli/opencode__provider_error.expected.jsonl",
+      "take": 2
+    },
+    {
+      "at": 2.5,
+      "snapshot": "before-done"
+    },
+    {
+      "at": 3,
+      "every": 1,
+      "stream": "agentcli/opencode__provider_error.expected.jsonl",
+      "skip": 2
+    },
+    {
+      "at": 4,
+      "snapshot": "end"
+    }
+  ],
+  "snapshots": {
+    "before-done": {
+      "busy": true,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "ses_2",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "assistant",
+          "id": null,
+          "label": "OpenCode · openrouter/qwen3-coder",
+          "showLabel": true,
+          "brand": "d3skhand",
+          "live": true,
+          "working": {
+            "text": "Patentage…",
+            "queued": false
+          },
+          "parts": []
+        },
+        {
+          "kind": "error",
+          "label": "Error · OpenCode",
+          "text": "Upstream request failed: Model is unavailable.",
+          "parts": []
+        }
+      ],
+      "approvals": []
+    },
+    "end": {
+      "busy": false,
+      "queued": false,
+      "liveInput": false,
+      "permissionMode": null,
+      "sessionId": "ses_2",
+      "pending": null,
+      "rows": [
+        {
+          "kind": "user",
+          "id": "u1",
+          "text": "Go",
+          "attachments": []
+        },
+        {
+          "kind": "error",
+          "label": "Error · OpenCode",
+          "text": "Upstream request failed: Model is unavailable.",
+          "parts": []
+        }
+      ],
+      "approvals": []
+    }
+  }
+}
