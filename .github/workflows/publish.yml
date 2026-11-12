@@ -1,3 +1,5 @@
+# Tag vX.Y.Z: both NuGet packages go to GitHub Packages (and nuget.org when NUGET_API_KEY is set),
+# and @d3sk/chat-ui goes to npm when NPM_TOKEN is set, all with the tag's version.
 name: publish
 
 on:
@@ -48,3 +50,31 @@ jobs:
             exit 0
           fi
           dotnet nuget push "artifacts/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" --skip-duplicate
+
+  npm:
+    runs-on: ${{ fromJSON(vars.CI_RUNS_ON || '["self-hosted", "kyber"]') }}
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: packages/chat-ui
+    steps:
+      - name: Keep the runner's home untouched
+        run: echo "npm_config_cache=$RUNNER_TEMP/npm-cache" >> "$GITHUB_ENV"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - name: Take the tag's version
+        run: npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version --allow-same-version
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "::notice::NPM_TOKEN is not set: npm skipped"
+            exit 0
+          fi
+          npm publish --access public

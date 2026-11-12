@@ -1,4 +1,5 @@
-# Every push and pull request runs the C# gate: restore, build with warnings as errors, every test.
+# Every push and pull request runs both gates: the C# one (restore, build with warnings as errors,
+# every test) and the web package's (node tests: the same conformance fixtures, the DOM, the corpora).
 # Linux runs on the owner's self-hosted runner (labels self-hosted, kyber): it is not ephemeral,
 # so the first step points the .NET install, NuGet and XDG folders at $RUNNER_TEMP (setup-dotnet's
 # default /usr/share/dotnet is not writable there). A fork picks its own
@@ -43,3 +44,22 @@ jobs:
         with:
           global-json-file: global.json
       - run: dotnet test D3sk.ChatUi.slnx -c Release
+
+  web:
+    name: test (linux, node)
+    runs-on: ${{ fromJSON(vars.CI_RUNS_ON || '["self-hosted", "kyber"]') }}
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: packages/chat-ui
+    steps:
+      - name: Keep the runner's home untouched
+        run: echo "npm_config_cache=$RUNNER_TEMP/npm-cache" >> "$GITHUB_ENV"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - name: Pack (what npm would publish)
+        run: npm pack --dry-run
