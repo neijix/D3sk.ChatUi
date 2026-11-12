@@ -23,13 +23,17 @@ public static class ChatTheme
             ["Chat.Rail"] = p => p.Rail,
         };
 
-    /// <summary>Sets the palette brushes and the text sizes in <paramref name="resources"/>; call again to switch theme.</summary>
+    /// <summary>Sets the palette and action brushes and the text sizes in <paramref name="resources"/>; call again to switch theme.</summary>
     public static void Apply(IResourceDictionary resources, string? paletteId)
     {
         var palette = ChatPalettes.Get(paletteId);
         foreach (var (key, pick) in Tokens)
         {
             resources[key] = new SolidColorBrush(pick(palette));
+        }
+        foreach (var (key, color) in ChatTokens.Actions)
+        {
+            resources[key] = new SolidColorBrush(color);
         }
         foreach (var (key, size) in ChatTypography.Sizes)
         {

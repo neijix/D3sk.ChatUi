@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Documents;
 using Avalonia.Media;
+using D3sk.ChatUi.Avalonia.Chat;
 using D3sk.ChatUi.Avalonia.Markdown;
 using D3sk.ChatUi.Labels;
 
@@ -24,6 +25,7 @@ public sealed class TranscriptRow : UserControl
     private readonly MarkdownView _markdown = new();
     private readonly StackPanel _tools = new() { Spacing = 2 };
     private readonly TextBlock _working = new() { FontStyle = FontStyle.Italic, Opacity = 0.7 };
+    private readonly ChatRowPresenter _rich = new() { IsVisible = false };
     private TranscriptItem? _item;
 
     /// <summary>Creates a row with no item.</summary>
@@ -33,9 +35,28 @@ public sealed class TranscriptRow : UserControl
         _panel.Children.Add(_markdown);
         _panel.Children.Add(_tools);
         _panel.Children.Add(_working);
+        _panel.Children.Add(_rich);
         Content = _panel;
+        _rich.ReviewApprovalRequested += (_, _) => ReviewApprovalRequested?.Invoke(this, EventArgs.Empty);
+        _rich.FixRequested += (_, callId) => FixRequested?.Invoke(this, callId);
+        _rich.LinkActivated += (_, link) => LinkActivated?.Invoke(this, link);
         DataContextChanged += (_, _) => Follow(DataContext as TranscriptItem);
     }
+
+    /// <summary>Raised when a tool's waiting badge is clicked.</summary>
+    public event EventHandler? ReviewApprovalRequested;
+
+    /// <summary>Raised when Fix is clicked on a failed tool.</summary>
+    public event EventHandler<string>? FixRequested;
+
+    /// <summary>Raised when a followable link of the agent's text is clicked.</summary>
+    public event EventHandler<D3sk.ChatUi.Markdown.Link>? LinkActivated;
+
+    /// <summary>True when failed tools offer Fix.</summary>
+    public bool CanFix { get => _rich.CanFix; set => _rich.CanFix = value; }
+
+    /// <summary>The presenter of a session row (visible when the item holds one).</summary>
+    public ChatRowPresenter RowPresenter => _rich;
 
     /// <summary>The project folder that tool paths are shown relative to.</summary>
     public string? ProjectRoot { get; set; }
@@ -59,6 +80,25 @@ public sealed class TranscriptRow : UserControl
     private void Refresh()
     {
         var item = _item;
+        var isRich = item?.Row is not null || item?.Pending is not null;
+        _rich.IsVisible = isRich;
+        if (isRich)
+        {
+            _plain.IsVisible = false;
+            _markdown.IsVisible = false;
+            _tools.IsVisible = false;
+            _working.IsVisible = false;
+            if (item!.Row is { } row)
+            {
+                _rich.Show(row);
+            }
+            else
+            {
+                _rich.ShowPending(item.Pending!);
+            }
+            return;
+        }
+        _tools.IsVisible = true;
         var user = item?.Role == TranscriptRole.User;
         _plain.IsVisible = user;
         _markdown.IsVisible = !user;

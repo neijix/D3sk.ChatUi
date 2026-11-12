@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageId>D3sk.ChatUi.Avalonia</PackageId>
-    <Description>Avalonia controls for the D3SKHAND chat: transcript, composer, quick settings, theme.</Description>
+    <Description>D3SKHAND's chat for Avalonia: ChatView with the virtualized transcript, working line, approvals and composer, fed with D3sk.AgentCli turn events.</Description>
     <Authors>neijix</Authors>
     <Copyright>Copyright (c) 2026 neijix</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

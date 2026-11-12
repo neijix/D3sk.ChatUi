@@ -28,7 +28,7 @@ public sealed class TranscriptView : UserControl
         {
             ItemsSource = Items,
             ItemsPanel = new FuncTemplate<global::Avalonia.Controls.Panel?>(() => new VirtualizingStackPanel()),
-            ItemTemplate = new FuncDataTemplate<TranscriptItem>((_, _) => new TranscriptRow { ProjectRoot = ProjectRoot }),
+            ItemTemplate = new FuncDataTemplate<TranscriptItem>((_, _) => NewRow()),
         };
         var dock = new DockPanel();
         DockPanel.SetDock(_status, Dock.Top);
@@ -39,6 +39,18 @@ public sealed class TranscriptView : UserControl
         Content = dock;
         Items.CollectionChanged += (_, _) => StickIfAtBottom();
     }
+
+    /// <summary>Raised when a tool's waiting badge is clicked in any row.</summary>
+    public event EventHandler? ReviewApprovalRequested;
+
+    /// <summary>Raised when Fix is clicked on a failed tool, with its call id.</summary>
+    public event EventHandler<string>? FixRequested;
+
+    /// <summary>Raised when a followable link of the agent's text is clicked.</summary>
+    public event EventHandler<D3sk.ChatUi.Markdown.Link>? LinkActivated;
+
+    /// <summary>True when failed tools offer Fix; set before items are added.</summary>
+    public bool CanFix { get; set; }
 
     /// <summary>The messages, oldest first. Add to it to append; change an item to stream into it.</summary>
     public ObservableCollection<TranscriptItem> Items { get; } = [];
@@ -71,6 +83,15 @@ public sealed class TranscriptView : UserControl
     {
         _stickToBottom = true;
         ScrollToEnd();
+    }
+
+    private TranscriptRow NewRow()
+    {
+        var row = new TranscriptRow { ProjectRoot = ProjectRoot, CanFix = CanFix };
+        row.ReviewApprovalRequested += (_, _) => ReviewApprovalRequested?.Invoke(this, EventArgs.Empty);
+        row.FixRequested += (_, callId) => FixRequested?.Invoke(this, callId);
+        row.LinkActivated += (_, link) => LinkActivated?.Invoke(this, link);
+        return row;
     }
 
     private void OnScrollChanged(object? sender, ScrollChangedEventArgs e)

@@ -12,7 +12,7 @@ public static class ChatFocus
     public const double Thickness = 2;
 
     /// <summary>The ring colour, the web desk's accent (<c>--accent</c>), readable on every palette.</summary>
-    public static Color Ring { get; } = Color.Parse("#4a9df8");
+    public static Color Ring { get; } = ChatTokens.Action("accent");
 
     /// <summary>The <c>:focus-visible</c> styles for buttons, text boxes, tree and list items.</summary>
     public static Styles CreateStyles()

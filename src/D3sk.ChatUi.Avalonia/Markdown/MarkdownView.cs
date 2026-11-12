@@ -22,8 +22,15 @@ public sealed class MarkdownView : UserControl
     /// <summary>How many blocks are shown.</summary>
     public int BlockCount => _rendered.Count;
 
+    /// <summary>The markdown last given to <see cref="SetMarkdown"/>.</summary>
+    public string Markdown { get; private set; } = "";
+
     /// <summary>Parses <paramref name="source"/> and shows it.</summary>
-    public void SetMarkdown(string? source) => SetDocument(MarkdownParser.Parse(source));
+    public void SetMarkdown(string? source)
+    {
+        Markdown = source ?? "";
+        SetDocument(MarkdownParser.Parse(source));
+    }
 
     /// <summary>Shows <paramref name="document"/>, rebuilding only from the first block that differs.</summary>
     public void SetDocument(MarkdownDocument document)
