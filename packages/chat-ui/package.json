@@ -1,0 +1,31 @@
+{
+  "name": "@d3sk/chat-ui",
+  "version": "0.2.0",
+  "description": "D3SKHAND's chat for any web page: transcript, working line, approvals and AgentCliBridge's chat box, fed with D3sk.AgentCli turn events.",
+  "type": "module",
+  "license": "MIT",
+  "author": "neijix",
+  "repository": { "type": "git", "url": "git+https://github.com/neijix/D3sk.ChatUi.git", "directory": "packages/chat-ui" },
+  "homepage": "https://github.com/neijix/D3sk.ChatUi/tree/main/packages/chat-ui#readme",
+  "keywords": ["d3skhand", "chat", "ai", "agent", "claude-code", "transcript"],
+  "exports": {
+    ".": "./src/index.js",
+    "./chat.css": "./chat.css",
+    "./spec/chat-ui.json": "./spec/chat-ui.json",
+    "./package.json": "./package.json"
+  },
+  "files": ["src", "vendor", "spec", "chat.css", "README.md", "LICENSE"],
+  "sideEffects": ["./src/dom/acb.js", "./vendor/acb/*.js", "*.css"],
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "sync-spec": "node scripts/sync-spec.mjs",
+    "pretest": "node scripts/sync-spec.mjs",
+    "test": "node --test test/",
+    "prepack": "node scripts/sync-spec.mjs",
+    "conformance:write": "node scripts/sync-spec.mjs && node scripts/write-conformance.mjs"
+  },
+  "publishConfig": { "access": "public" },
+  "devDependencies": {
+    "happy-dom": "^20.0.0"
+  }
+}
