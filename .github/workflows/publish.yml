@@ -10,8 +10,22 @@ permissions:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    # Private repo: the owner's self-hosted runner only; a fork picks its own with CI_RUNS_ON.
+    runs-on: ${{ fromJSON(vars.CI_RUNS_ON || '["self-hosted", "kyber"]') }}
+    timeout-minutes: 20
     steps:
+      - name: Keep the runner's home untouched
+        run: |
+          {
+            echo "DOTNET_INSTALL_DIR=$RUNNER_TEMP/dotnet"
+            echo "DOTNET_CLI_HOME=$RUNNER_TEMP/dotnet-home"
+            echo "NUGET_PACKAGES=$RUNNER_TEMP/nuget/packages"
+            echo "NUGET_HTTP_CACHE_PATH=$RUNNER_TEMP/nuget/http"
+            echo "NUGET_PLUGINS_CACHE_PATH=$RUNNER_TEMP/nuget/plugins"
+            echo "XDG_DATA_HOME=$RUNNER_TEMP/xdg/data"
+            echo "DOTNET_CLI_TELEMETRY_OPTOUT=1"
+            echo "DOTNET_NOLOGO=1"
+          } >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
@@ -25,3 +39,12 @@ jobs:
           --source https://nuget.pkg.github.com/neijix/index.json
           --api-key "${{ secrets.GITHUB_TOKEN }}"
           --skip-duplicate
+      - name: Push to nuget.org
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          if [ -z "$NUGET_API_KEY" ]; then
+            echo "::notice::NUGET_API_KEY is not set: nuget.org skipped"
+            exit 0
+          fi
+          dotnet nuget push "artifacts/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" --skip-duplicate
