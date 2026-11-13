@@ -112,6 +112,42 @@ cd packages/chat-ui && npm ci && npm test
 After a deliberate rule change, update the snapshots from the web session with
 `npm run conformance:write`. Read the diff, then make the C# side pass the same files.
 
+## Maintaining
+
+Words and colours live once, in `spec/chat-ui.json`. The rules and the drawing live twice, one file per
+side. The conformance cases are what keep the two sides equal:
+
+| What | Web (`packages/chat-ui/src`) | C# (`src/`) |
+|---|---|---|
+| Turn state | `session.js` | `D3sk.ChatUi/Session/ChatSession.cs`, `ChatViewState.cs` |
+| AgentCli events → frames | `events.js` | `D3sk.ChatUi/Session/AgentCliEvents.cs` |
+| Labels | `labels.js` | `D3sk.ChatUi/Labels/ChatLabels.cs` |
+| Tool line, IN, diff | `tools.js` | `D3sk.ChatUi/Tools/ToolText.cs` |
+| Hidden title line | `reply-title.js` | `D3sk.ChatUi/Markdown/ReplyTitle.cs` |
+| Markdown | `markdown.js` | `D3sk.ChatUi/Markdown/MarkdownParser.cs`, `HtmlWriter.cs` |
+| Theme | `theme.js`, `../chat.css` | `D3sk.ChatUi.Avalonia/Theme/` |
+| A row | `dom/transcript.js` | `D3sk.ChatUi.Avalonia/Chat/ChatRowPresenter.cs` |
+| Approvals | `dom/approvals.js` | `D3sk.ChatUi.Avalonia/Chat/ApprovalPanel.cs` |
+| The whole chat, host API | `chat.js` | `D3sk.ChatUi.Avalonia/Chat/ChatView.cs` |
+
+How to make each kind of change:
+
+- **A word or a colour.** Edit `spec/chat-ui.json`; neither front-end changes. If the word appears in a snapshot,
+  run `npm run conformance:write` in `packages/chat-ui` and commit the updated cases.
+- **A behaviour** (a new frame, a badge, a rule):
+  1. Add or edit a case in `spec/conformance/cases/`, with steps and an empty `"snapshots": {}`.
+  2. Change the web side, then run `npm run conformance:write`. Read the snapshot diff: it is the new behaviour, spelled out.
+  3. Change the C# file on the same row of the table until `dotnet test` passes. A failure names the
+     first JSON path that differs, for example `$.rows[1].parts[0].label`.
+  4. If it shows on screen, change both views. `test/dom.test.js` and `ChatViewConformanceTests` read
+     the page back by the same class names.
+- **AgentCliBridge's chat box** (`packages/chat-ui/vendor/acb`). Copy the new files from AgentCliBridge's
+  `agent_cli_bridge/ui`, then rewrite `MANIFEST.txt` with the commit and the SHA-256 of each file.
+- **New D3sk.AgentCli captures.** Add them to `spec/conformance/agentcli/` under new names with their manifest
+  line, and add a case that replays them. Never edit an existing capture.
+
+CI runs both gates on every push, so one side changing without the other fails there.
+
 ## CI and release
 
 `.github/workflows/ci.yml` runs both gates on the self-hosted Linux runner (`[self-hosted, kyber]`;
