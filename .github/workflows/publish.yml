@@ -74,7 +74,23 @@ jobs:
           --api-key "$NUGET_API_KEY"
           --skip-duplicate
 
+  # npm only when the NPM_TOKEN secret exists: without it the npm job is skipped, not run for nothing.
+  npm-token:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      set: ${{ steps.check.outputs.set }}
+    steps:
+      - id: check
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -n "$NODE_AUTH_TOKEN" ]; then echo "set=true" >> "$GITHUB_OUTPUT"
+          else echo "::notice::NPM_TOKEN is not set: npm skipped"; fi
+
   npm:
+    needs: npm-token
+    if: needs.npm-token.outputs.set == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
@@ -101,9 +117,4 @@ jobs:
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          if [ -z "$NODE_AUTH_TOKEN" ]; then
-            echo "::notice::NPM_TOKEN is not set: npm skipped"
-            exit 0
-          fi
-          npm publish --access public
+        run: npm publish --access public
