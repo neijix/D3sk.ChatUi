@@ -150,9 +150,13 @@ CI runs both gates on every push, so one side changing without the other fails t
 
 ## CI and release
 
-`.github/workflows/ci.yml` runs both gates on the self-hosted Linux runner (`[self-hosted, kyber]`;
-set the repository variable `CI_RUNS_ON` to a JSON label list to override). Tag `vX.Y.Z` and
-`publish.yml` tests and publishes with the tag's version:
+`./check.sh` (`check.ps1` on Windows) runs both gates locally; `--full` adds `npm pack --dry-run`.
+
+`.github/workflows/ci.yml` runs both gates on push to `main` (never on pull requests), on runners
+labelled `[self-hosted, kyber]`. No runner is registered on this public repository, so its jobs wait
+until one is, or until the repository variable `CI_RUNS_ON` names other runners (a JSON label list,
+for example `["ubuntu-latest"]`). Tag `vX.Y.Z` and `publish.yml` tests and publishes with the tag's
+version, on the same runners:
 
 - the two NuGet packages go to GitHub Packages, and to nuget.org when the `NUGET_API_KEY` secret is set;
 - `@d3sk/chat-ui` goes to npm when the `NPM_TOKEN` secret is set. The `d3sk` npm org must exist.
