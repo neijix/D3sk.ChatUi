@@ -20,7 +20,7 @@
   "scripts": {
     "sync-spec": "node scripts/sync-spec.mjs",
     "pretest": "node scripts/sync-spec.mjs",
-    "test": "node --test test/",
+    "test": "node --test",
     "prepack": "node scripts/sync-spec.mjs",
     "conformance:write": "node scripts/sync-spec.mjs && node scripts/write-conformance.mjs"
   },
