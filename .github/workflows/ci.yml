@@ -1,16 +1,15 @@
-# Every push and pull request runs both gates: the C# one (restore, build with warnings as errors,
+# Every push to main runs both gates: the C# one (restore, build with warnings as errors,
 # every test) and the web package's (node tests: the same conformance fixtures, the DOM, the corpora).
 # Linux runs on the owner's self-hosted runner (labels self-hosted, kyber): it is not ephemeral,
 # so the first step points the .NET install, NuGet and XDG folders at $RUNNER_TEMP (setup-dotnet's
 # default /usr/share/dotnet is not writable there). A fork picks its own
 # runner with the repository variable CI_RUNS_ON, a JSON label list such as ["ubuntu-latest"].
+# No pull_request trigger: a self-hosted runner must never run code from someone else's branch.
 name: CI
 
 on:
   push:
     branches: [main]
-    paths-ignore: ['**.md', 'docs/**']
-  pull_request:
     paths-ignore: ['**.md', 'docs/**']
   workflow_dispatch:
 

@@ -2,3 +2,5 @@
 spec/corpus/** -text
 spec/conformance/agentcli/** -text
 packages/chat-ui/vendor/acb/** -text
+# Shell scripts run under bash on every OS: never CRLF.
+*.sh text eol=lf
