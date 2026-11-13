@@ -53,9 +53,9 @@ jobs:
       run:
         working-directory: packages/chat-ui
     steps:
+      - uses: actions/checkout@v4
       - name: Keep the runner's home untouched
         run: echo "npm_config_cache=$RUNNER_TEMP/npm-cache" >> "$GITHUB_ENV"
-      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
