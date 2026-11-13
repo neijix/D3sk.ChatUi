@@ -1,66 +1,95 @@
-# Tag vX.Y.Z: both NuGet packages go to GitHub Packages (and nuget.org when NUGET_API_KEY is set),
-# and @d3sk/chat-ui goes to npm when NPM_TOKEN is set, all with the tag's version.
+# Tag vX.Y.Z (or run it by hand on an existing tag): tests, then publishes with the tag's version.
+# - Both NuGet packages go to GitHub Packages (the job's token) and to nuget.org through Trusted
+#   Publishing: GitHub's OIDC token is exchanged for a one-hour nuget.org key, no stored API key.
+#   The nuget.org policy names this repository and this file (publish.yml); see README "CI and release".
+# - @d3sk/chat-ui goes to npm when the NPM_TOKEN secret is set.
+# Public repository: GitHub-hosted runners only, never a self-hosted one.
 name: publish
 
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to publish (vX.Y.Z)
+        required: true
 
 permissions:
   contents: read
-  packages: write
+
+concurrency:
+  group: publish-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+env:
+  TAG: ${{ inputs.tag || github.ref_name }}
 
 jobs:
-  publish:
-    # Private repo: the owner's self-hosted runner only; a fork picks its own with CI_RUNS_ON.
-    runs-on: ${{ fromJSON(vars.CI_RUNS_ON || '["self-hosted", "kyber"]') }}
+  nuget:
+    runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
+      id-token: write # nuget.org Trusted Publishing
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_NOLOGO: 1
     steps:
-      - name: Keep the runner's home untouched
+      - name: Check the tag
         run: |
-          {
-            echo "DOTNET_INSTALL_DIR=$RUNNER_TEMP/dotnet"
-            echo "DOTNET_CLI_HOME=$RUNNER_TEMP/dotnet-home"
-            echo "NUGET_PACKAGES=$RUNNER_TEMP/nuget/packages"
-            echo "NUGET_HTTP_CACHE_PATH=$RUNNER_TEMP/nuget/http"
-            echo "NUGET_PLUGINS_CACHE_PATH=$RUNNER_TEMP/nuget/plugins"
-            echo "XDG_DATA_HOME=$RUNNER_TEMP/xdg/data"
-            echo "DOTNET_CLI_TELEMETRY_OPTOUT=1"
-            echo "DOTNET_NOLOGO=1"
-          } >> "$GITHUB_ENV"
+          [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?$ ]] || { echo "::error::not a vX.Y.Z tag: $TAG"; exit 1; }
+          echo "VERSION=${TAG#v}" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ env.TAG }}
+          persist-credentials: false
       - uses: actions/setup-dotnet@v4
         with:
           global-json-file: global.json
       - run: dotnet test D3sk.ChatUi.slnx -c Release
       - name: Pack
-        run: dotnet pack D3sk.ChatUi.slnx -c Release -o artifacts -p:Version=${GITHUB_REF_NAME#v}
+        run: dotnet pack D3sk.ChatUi.slnx -c Release -o artifacts -p:Version="$VERSION"
       - name: Push to GitHub Packages
+        env:
+          GH_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: >
           dotnet nuget push "artifacts/*.nupkg"
-          --source https://nuget.pkg.github.com/neijix/index.json
-          --api-key "${{ secrets.GITHUB_TOKEN }}"
+          --source "https://nuget.pkg.github.com/${GITHUB_REPOSITORY_OWNER}/index.json"
+          --api-key "$GH_PACKAGES_TOKEN"
           --skip-duplicate
+      # Asked for just before the push: the key lives one hour and each OIDC token buys one key.
+      - name: nuget.org login (OIDC -> short-lived key)
+        id: nuget-login
+        uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
+        with:
+          user: ${{ vars.NUGET_USER || github.repository_owner }}
       - name: Push to nuget.org
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-        run: |
-          if [ -z "$NUGET_API_KEY" ]; then
-            echo "::notice::NUGET_API_KEY is not set: nuget.org skipped"
-            exit 0
-          fi
-          dotnet nuget push "artifacts/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" --skip-duplicate
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
+        run: >
+          dotnet nuget push "artifacts/*.nupkg"
+          --source https://api.nuget.org/v3/index.json
+          --api-key "$NUGET_API_KEY"
+          --skip-duplicate
 
   npm:
-    runs-on: ${{ fromJSON(vars.CI_RUNS_ON || '["self-hosted", "kyber"]') }}
+    runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
       run:
         working-directory: packages/chat-ui
     steps:
+      - name: Check the tag
+        working-directory: .
+        run: |
+          [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?$ ]] || { echo "::error::not a vX.Y.Z tag: $TAG"; exit 1; }
+          echo "VERSION=${TAG#v}" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
-      - name: Keep the runner's home untouched
-        run: echo "npm_config_cache=$RUNNER_TEMP/npm-cache" >> "$GITHUB_ENV"
+        with:
+          ref: refs/tags/${{ env.TAG }}
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -68,7 +97,7 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm test
       - name: Take the tag's version
-        run: npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version --allow-same-version
+        run: npm version "$VERSION" --no-git-tag-version --allow-same-version
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

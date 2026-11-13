@@ -152,13 +152,15 @@ CI runs both gates on every push, so one side changing without the other fails t
 
 `./check.sh` (`check.ps1` on Windows) runs both gates locally; `--full` adds `npm pack --dry-run`.
 
-`.github/workflows/ci.yml` runs both gates on push to `main` (never on pull requests), on runners
-labelled `[self-hosted, kyber]`. No runner is registered on this public repository, so its jobs wait
-until one is, or until the repository variable `CI_RUNS_ON` names other runners (a JSON label list,
-for example `["ubuntu-latest"]`). Tag `vX.Y.Z` and `publish.yml` tests and publishes with the tag's
-version, on the same runners:
+`.github/workflows/ci.yml` runs both gates on GitHub-hosted runners, on push to `main` and on every
+pull request (read-only token, no secret). Push a tag `vX.Y.Z`, or run `publish.yml` by hand on an
+existing tag (`gh workflow run publish.yml -f tag=vX.Y.Z`): it tests and publishes with the tag's version:
 
-- the two NuGet packages go to GitHub Packages, and to nuget.org when the `NUGET_API_KEY` secret is set;
+- the two NuGet packages go to GitHub Packages and to nuget.org. nuget.org uses
+  [Trusted Publishing](https://learn.microsoft.com/nuget/nuget-org/trusted-publishing), so no API key is
+  stored: the account that owns the packages adds a policy (nuget.org → user name → Trusted
+  Publishing) with this repository's owner, the repository name and the workflow file `publish.yml`.
+  The job logs in as the repository owner, or as the repository variable `NUGET_USER` when set;
 - `@d3sk/chat-ui` goes to npm when the `NPM_TOKEN` secret is set. The `d3sk` npm org must exist.
 
 ## Licence
