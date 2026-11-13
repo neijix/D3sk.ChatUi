@@ -11,3 +11,6 @@ TestResults/
 .DS_Store
 # Local override: build against ../D3sk.Contracts until the read:packages token is here.
 Directory.Build.local.targets
+.env
+.claude/settings.local.json
+CLAUDE.local.md
