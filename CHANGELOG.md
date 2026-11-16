@@ -5,6 +5,8 @@ All notable changes to `D3sk.ChatUi`, `D3sk.ChatUi.Avalonia` and `@d3sk/chat-ui-
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-16
+
 - Rename the npm package to `@d3sk/chat-ui-web`, ship TypeScript declarations (`src/index.d.ts`), and switch `publish.yml` to npm Trusted Publishing (OIDC + provenance).
 
 ## [0.2.0] - 2026-11-12
