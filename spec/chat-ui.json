@@ -1,5 +1,5 @@
 {
-  "$comment": "The one source of the chat's look and words. D3sk.ChatUi embeds this file and @d3sk/chat-ui imports it: change a colour or a sentence here, never in either front-end. Taken from D3SKHAND's hub (style.css, labels.js, transcript.js, stream.js, approvals.js) and AgentCliBridge's /acb box.",
+  "$comment": "The one source of the chat's look and words. D3sk.ChatUi embeds this file and @d3sk/chat-ui-web imports it: change a colour or a sentence here, never in either front-end. Taken from D3SKHAND's hub (style.css, labels.js, transcript.js, stream.js, approvals.js) and AgentCliBridge's /acb box.",
   "version": 1,
   "tokens": {
     "palettes": {

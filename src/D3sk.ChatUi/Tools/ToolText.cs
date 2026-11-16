@@ -9,7 +9,7 @@ namespace D3sk.ChatUi.Tools;
 public sealed record DiffLine(string Kind, string Text);
 
 /// <summary>
-/// How a tool call reads in the transcript (hub transcript.js; @d3sk/chat-ui's tools.js): its label,
+/// How a tool call reads in the transcript (hub transcript.js; @d3sk/chat-ui-web's tools.js): its label,
 /// kind, one-line summary, IN text or diff, and whether its output is a refusal.
 /// </summary>
 public static partial class ToolText

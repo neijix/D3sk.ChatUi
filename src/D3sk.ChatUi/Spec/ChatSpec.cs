@@ -4,7 +4,7 @@ namespace D3sk.ChatUi.Spec;
 
 /// <summary>
 /// The shared spec (<c>spec/chat-ui.json</c>, embedded): design tokens, labels and limits. The web
-/// package <c>@d3sk/chat-ui</c> reads the same file, so both front-ends use the same words and colours.
+/// package <c>@d3sk/chat-ui-web</c> reads the same file, so both front-ends use the same words and colours.
 /// </summary>
 public static class ChatSpec
 {

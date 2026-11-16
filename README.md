@@ -6,7 +6,7 @@ D3SKHAND's chat, identical in two front-ends, for any app that runs AI coding ag
 |---|---|---|
 | `D3sk.ChatUi` | NuGet | The rules, with no UI types: the session that folds turn events into what the chat shows, labels, tool summaries, markdown to escaped HTML, the composer's state. |
 | `D3sk.ChatUi.Avalonia` | NuGet | `ChatView`: virtualized transcript, working line, approval panel, composer with quick settings. |
-| `@d3sk/chat-ui` | npm | `mountChat`: the same chat for a web page, taken from D3SKHAND's hub chat (transcript, stream, approvals) with AgentCliBridge's `/acb` chat box. |
+| `@d3sk/chat-ui-web` | npm | `mountChat`: the same chat for a web page, taken from D3SKHAND's hub chat (transcript, stream, approvals) with AgentCliBridge's `/acb` chat box. |
 
 D3SKHAND's web chat is the reference. Both front-ends follow it, and they are kept identical by
 three shared things under [`spec/`](spec):
@@ -67,8 +67,8 @@ with its own view.
 ### Web
 
 ```js
-import { mountChat } from "@d3sk/chat-ui";
-import "@d3sk/chat-ui/chat.css";
+import { mountChat } from "@d3sk/chat-ui-web";
+import "@d3sk/chat-ui-web/chat.css";
 
 const chat = mountChat(document.querySelector("#chat"), {
   agents: [{ id: "claude", name: "Claude Code", models: [{ id: "claude-opus-4-7", name: "Opus 4.7" }] }],
@@ -89,7 +89,7 @@ See [`packages/chat-ui/README.md`](packages/chat-ui/README.md).
 
 ### D3SKHAND
 
-D3SKHAND moves its hub chat to `@d3sk/chat-ui` like this:
+D3SKHAND moves its hub chat to `@d3sk/chat-ui-web` like this:
 
 1. `mountChat` replaces `stream.js consume()`, the transcript and approval parts of
    `transcript.js` / `approvals.js`, and the `AgentUI.mountComposer` call in `composer.js`. The hub's
@@ -161,7 +161,11 @@ existing tag (`gh workflow run publish.yml -f tag=vX.Y.Z`): it tests and publish
   stored: the account that owns the packages adds a policy (nuget.org → user name → Trusted
   Publishing) with this repository's owner, the repository name and the workflow file `publish.yml`.
   The job logs in as the repository owner, or as the repository variable `NUGET_USER` when set;
-- `@d3sk/chat-ui` goes to npm when the `NPM_TOKEN` secret is set. The `d3sk` npm org must exist.
+- `@d3sk/chat-ui-web` goes to npm through [Trusted Publishing](https://docs.npmjs.com/trusted-publishers)
+  (OIDC with provenance, no stored key: on npmjs.com → `@d3sk/chat-ui-web` → Settings → Trusted
+  Publisher, configure GitHub Actions with this repository's owner, the repository name and the
+  workflow file `publish.yml`; or set the `NPM_TOKEN` secret for the first publish before the
+  package exists on npm). The `d3sk` npm org must exist.
 
 ## Licence
 

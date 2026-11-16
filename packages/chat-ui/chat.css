@@ -1,4 +1,4 @@
-/* @d3sk/chat-ui: D3SKHAND's chat (hub/static/style.css, the conversation part), scoped under
+/* @d3sk/chat-ui-web: D3SKHAND's chat (hub/static/style.css, the conversation part), scoped under
    .d3sk-chat. Colours, sizes and radii are custom properties that mountChat sets from
    spec/chat-ui.json (tokens), so a palette is chosen in JS and never written here. The chat box
    below the transcript is AgentCliBridge's (vendor/acb), styled by its own two files. */

@@ -4,7 +4,7 @@ namespace D3sk.ChatUi.Markdown;
 
 /// <summary>
 /// Agents end a reply with a hidden <c>&lt;!-- d3skhand-title: … --&gt;</c> line; the transcript hides it,
-/// whole or still arriving (hub reply-title.js, @d3sk/chat-ui's reply-title.js).
+/// whole or still arriving (hub reply-title.js, @d3sk/chat-ui-web's reply-title.js).
 /// </summary>
 public static partial class ReplyTitle
 {

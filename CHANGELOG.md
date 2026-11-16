@@ -1,9 +1,11 @@
 # Changelog
 
-All notable changes to `D3sk.ChatUi`, `D3sk.ChatUi.Avalonia` and `@d3sk/chat-ui`. Versions follow
+All notable changes to `D3sk.ChatUi`, `D3sk.ChatUi.Avalonia` and `@d3sk/chat-ui-web`. Versions follow
 [Semantic Versioning](https://semver.org).
 
 ## [Unreleased]
+
+- Rename the npm package to `@d3sk/chat-ui-web`, ship TypeScript declarations (`src/index.d.ts`), and switch `publish.yml` to npm Trusted Publishing (OIDC + provenance).
 
 ## [0.2.0] - 2026-11-12
 
@@ -34,7 +36,7 @@ D3SKHAND's chat in two identical front-ends, Avalonia and the web, under one spe
 - `ChatRowPresenter` draws a session row. `TranscriptItem.Row` and `TranscriptItem.Pending` carry one
   through the virtualized `TranscriptView`. Palettes, sizes and action colours come from the spec.
 
-### @d3sk/chat-ui (new, npm)
+### @d3sk/chat-ui-web (new, npm)
 
 - `mountChat`: D3SKHAND's hub chat (transcript, stream, approvals) and AgentCliBridge's `/acb` chat
   box (vendored unchanged), with `feed`, `feedEvent`, `readSse`, `resume`, `setAgents`, `setPalette`.

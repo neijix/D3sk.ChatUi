@@ -18,7 +18,7 @@ public sealed record ChatStatusInput(
 public sealed record StatusPill(string Kind, string Text);
 
 /// <summary>
-/// Small wording rules of the transcript, equal to the web UI's labels.js (and @d3sk/chat-ui's).
+/// Small wording rules of the transcript, equal to the web UI's labels.js (and @d3sk/chat-ui-web's).
 /// Every word comes from the shared spec (spec/chat-ui.json); the working phrases are the owner's
 /// Québécois list (2026-09-19).
 /// </summary>

@@ -1,4 +1,4 @@
-// @d3sk/chat-ui: D3SKHAND's chat for any web page. mountChat is the component; the rest is the
+// @d3sk/chat-ui-web: D3SKHAND's chat for any web page. mountChat is the component; the rest is the
 // plain logic it draws from, the same rules D3sk.ChatUi (C#) follows.
 export { mountChat, composerAgents } from "./chat.js";
 export { createSession } from "./session.js";

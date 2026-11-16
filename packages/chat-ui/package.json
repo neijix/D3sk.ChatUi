@@ -1,15 +1,19 @@
 {
-  "name": "@d3sk/chat-ui",
+  "name": "@d3sk/chat-ui-web",
   "version": "0.2.0",
   "description": "D3SKHAND's chat for any web page: transcript, working line, approvals and AgentCliBridge's chat box, fed with D3sk.AgentCli turn events.",
   "type": "module",
+  "types": "./src/index.d.ts",
   "license": "MIT",
   "author": "neijix",
   "repository": { "type": "git", "url": "git+https://github.com/neijix/D3sk.ChatUi.git", "directory": "packages/chat-ui" },
   "homepage": "https://github.com/neijix/D3sk.ChatUi/tree/main/packages/chat-ui#readme",
   "keywords": ["d3skhand", "chat", "ai", "agent", "claude-code", "transcript"],
   "exports": {
-    ".": "./src/index.js",
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
     "./chat.css": "./chat.css",
     "./spec/chat-ui.json": "./spec/chat-ui.json",
     "./package.json": "./package.json"

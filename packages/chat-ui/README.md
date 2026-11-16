@@ -1,20 +1,20 @@
-# @d3sk/chat-ui
+# @d3sk/chat-ui-web
 
 D3SKHAND's chat for any web page: the transcript (markdown, thinking, tool calls with IN/OUT and
 diffs, badges), the working line, the approval dialog with AskUserQuestion, and AgentCliBridge's chat box.
-You feed it D3sk.AgentCli turn events. No build step and no framework: ES modules plus one stylesheet.
+You feed it D3sk.AgentCli turn events. No build step and no framework: ES modules, TypeScript declarations (`index.d.ts`), plus one stylesheet.
 
 The same chat exists for Avalonia as the NuGet package `D3sk.ChatUi.Avalonia`. Both follow one spec
 (tokens and labels) and pass the same conformance fixtures. See the
 [repository](https://github.com/neijix/D3sk.ChatUi).
 
 ```bash
-npm install @d3sk/chat-ui
+npm install @d3sk/chat-ui-web
 ```
 
 ```js
-import { mountChat } from "@d3sk/chat-ui";
-import "@d3sk/chat-ui/chat.css"; // or <link rel="stylesheet" href=".../chat.css">
+import { mountChat } from "@d3sk/chat-ui-web";
+import "@d3sk/chat-ui-web/chat.css"; // or <link rel="stylesheet" href=".../chat.css">
 
 const chat = mountChat(document.querySelector("#chat"), {
   agents: [{ id: "claude", name: "Claude Code", models: [{ id: "claude-opus-4-7", name: "Opus 4.7" }] }],
@@ -48,7 +48,7 @@ one on the first text or tool. `done` ends the turn.
 
 `createSession()` is the chat's state with no page: `feed`, `feedEvent`, `resume`, `view(at)` and
 `snapshot(at)`. The labels and tool-summary helpers, `renderMarkdown` (escapes everything outside its
-whitelist), `eventToFrame` and the spec (`spec`, or `@d3sk/chat-ui/spec/chat-ui.json`) are exported too.
+whitelist), `eventToFrame` and the spec (`spec`, or `@d3sk/chat-ui-web/spec/chat-ui.json`) are exported too.
 
 ## Licence
 

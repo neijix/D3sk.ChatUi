@@ -2,7 +2,8 @@
 # - Both NuGet packages go to GitHub Packages (the job's token) and to nuget.org through Trusted
 #   Publishing: GitHub's OIDC token is exchanged for a one-hour nuget.org key, no stored API key.
 #   The nuget.org policy names this repository and this file (publish.yml); see README "CI and release".
-# - @d3sk/chat-ui goes to npm when the NPM_TOKEN secret is set.
+# - @d3sk/chat-ui-web goes to npm through Trusted Publishing (OIDC, no stored NPM_TOKEN) when
+#   configured on npmjs.com (or with NPM_TOKEN if provided as a fallback).
 # Public repository: GitHub-hosted runners only, never a self-hosted one.
 name: publish
 
@@ -74,25 +75,12 @@ jobs:
           --api-key "$NUGET_API_KEY"
           --skip-duplicate
 
-  # npm only when the NPM_TOKEN secret exists: without it the npm job is skipped, not run for nothing.
-  npm-token:
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
-    outputs:
-      set: ${{ steps.check.outputs.set }}
-    steps:
-      - id: check
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          if [ -n "$NODE_AUTH_TOKEN" ]; then echo "set=true" >> "$GITHUB_OUTPUT"
-          else echo "::notice::NPM_TOKEN is not set: npm skipped"; fi
-
   npm:
-    needs: npm-token
-    if: needs.npm-token.outputs.set == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write # npm Trusted Publishing (OIDC + provenance)
     defaults:
       run:
         working-directory: packages/chat-ui
@@ -108,7 +96,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
       - run: npm ci --no-audit --no-fund
       - run: npm test
@@ -117,4 +105,4 @@ jobs:
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
+        run: npm publish --access public --provenance

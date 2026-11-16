@@ -95,7 +95,7 @@ public sealed record ChatViewState(
     IReadOnlyList<ChatRowView> Rows,
     IReadOnlyList<ChatApprovalView> Approvals)
 {
-    /// <summary>The snapshot, with the same keys and values as @d3sk/chat-ui's <c>session.snapshot()</c>.</summary>
+    /// <summary>The snapshot, with the same keys and values as @d3sk/chat-ui-web's <c>session.snapshot()</c>.</summary>
     public JsonObject ToSnapshot() => new()
     {
         ["busy"] = Busy,

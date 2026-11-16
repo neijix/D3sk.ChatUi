@@ -6,7 +6,7 @@ namespace D3sk.ChatUi.Tests.Session;
 
 /// <summary>
 /// spec/conformance: every case replays to the snapshots stored in it, the same files the web
-/// package @d3sk/chat-ui replays (packages/chat-ui/test/conformance.test.js).
+/// package @d3sk/chat-ui-web replays (packages/chat-ui/test/conformance.test.js).
 /// </summary>
 public sealed class ConformanceTests
 {
